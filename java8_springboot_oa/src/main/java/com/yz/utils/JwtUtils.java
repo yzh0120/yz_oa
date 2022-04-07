@@ -17,14 +17,14 @@ public class JwtUtils {
     private String header;
 
     // 生成jwt
-    public String generateToken(String username) {
+    public String generateToken(String userId) {
 
         Date nowDate = new Date();
         Date expireDate = new Date(nowDate.getTime() + 1000 * expire);
 
         return Jwts.builder()
                 .setHeaderParam("typ", "JWT")
-                .setSubject(username)
+                .setSubject(userId)
                 .setIssuedAt(nowDate)
                 .setExpiration(expireDate)// 7天過期
                 .signWith(SignatureAlgorithm.HS512, secret)
