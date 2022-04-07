@@ -28,6 +28,9 @@ public class HandlerInterceptorImpl implements HandlerInterceptor {
 
         //handler   //com.yz.controller.demoController#demo()
         //handlerMethod 对象 和 handler差不多 //
+        
+        //08.SpringMVC 处理器 - HandlerMethod
+        //https://blog.csdn.net/u012420654/article/details/59480498?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_default&utm_relevant_index=1
         HandlerMethod handlerMethod = (HandlerMethod)handler;//
         Class cls = handlerMethod.getBeanType();//class ---com.yz.controller.demoController
         Method method = handlerMethod.getMethod();//public java.lang.String --com.yz.controller.demoController.demo()
