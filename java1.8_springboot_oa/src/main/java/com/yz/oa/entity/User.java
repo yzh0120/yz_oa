@@ -1,6 +1,8 @@
 package com.yz.oa.entity;
 
 import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,12 +15,15 @@ import lombok.EqualsAndHashCode;
  * @since 2022-04-09
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class User extends BaseEntity {
+public class User  {
 
-    private static final long serialVersionUID = 1L;
+    //private static final long id = 1L;//serialVersionUID
+    @TableId(value = "id")
+    private String id;
 
-    private String name;
+    private String username;
+
+    private String password;
 
     private Integer age;
 

@@ -1,4 +1,4 @@
-package com.yz.oa.dto;
+package com.yz.oa.dto.responseDto;
 
 import lombok.Data;
 

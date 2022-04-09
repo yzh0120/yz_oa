@@ -1,8 +1,12 @@
 package com.yz.oa.service;
 
-import com.yz.oa.dto.Captcha;
+import com.yz.oa.dto.requestDto.UserLogin;
+import com.yz.oa.dto.responseDto.Captcha;
 import com.yz.oa.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -16,4 +20,7 @@ public interface UserService extends IService<User> {
 
     Captcha getCaptcha();
 
+    User checkLogin(UserLogin userLogin, HttpServletResponse resp);
+
+    User getUserInfo(HttpServletRequest req);
 }

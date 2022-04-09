@@ -1,18 +1,25 @@
 package com.yz.oa.service.impl;
 
-import cn.hutool.core.map.MapUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.google.code.kaptcha.Producer;
-import com.yz.oa.dto.Captcha;
+import com.yz.oa.dto.requestDto.UserLogin;
+import com.yz.oa.dto.responseDto.Captcha;
 import com.yz.oa.entity.User;
 import com.yz.oa.mapper.UserMapper;
 import com.yz.oa.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yz.oa.utils.JwtUtils;
 import com.yz.oa.utils.RedisUtil;
+import com.yz.oa.utils.exception.BusException;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -34,6 +41,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
     RedisUtil redisUtil;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    JwtUtils jwtUtils;
 
     @Override
     public Captcha getCaptcha() {
@@ -67,5 +80,48 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         captcha.setCaptchaToken(captchaToken);
         captcha.setCaptchaImgBase64(base64Img);
         return captcha;
+    }
+
+    /*
+    *
+    * */
+    @Override
+    public User checkLogin(UserLogin userLogin, HttpServletResponse resp) {
+        //1 判断验证码和验证码token是否正确
+        if (StringUtils.isBlank(userLogin.getCaptchaImgBase64Code()) || StringUtils.isBlank(userLogin.getCaptchaToken())) {
+            throw new BusException("验证码错误");
+        }
+        if (!userLogin.getCaptchaImgBase64Code().equals(redisUtil.hget("captcha", userLogin.getCaptchaToken()))) {
+            throw new BusException("验证码错误");
+        }
+
+        //2 检查数据库中是否有此用户
+        User user = userService.getOne(new QueryWrapper<User>().eq("username", userLogin.getUsername()).eq("password", userLogin.getPassword()));
+//        System.out.println(user+"111111111");
+        if(user != null){
+            // 生成jwt，并放置到请求头中
+            String jwt = jwtUtils.generateToken(user.getId());
+            resp.setHeader(jwtUtils.getHeader(), jwt);
+
+            return user;
+        }else {
+            throw new BusException("用户不存在");
+        }
+
+    }
+
+    @Override
+    public User getUserInfo(HttpServletRequest req) {
+
+        String authorization = req.getHeader("Authorization");
+
+        String token = authorization.replace("Bearer ", "");
+
+        Claims claims = jwtUtils.getClaimByToken(token);
+        String userId = claims.getSubject();
+        System.out.println(userId+"userId");
+
+        User user = userService.getOne(new QueryWrapper<User>().eq("id", userId));
+        return user;
     }
 }

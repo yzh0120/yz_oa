@@ -24,10 +24,10 @@
         <el-form-item label="密码" prop="password">
           <el-input v-model="form.password" type="password"></el-input>
         </el-form-item>
-        <el-form-item label="验证码" prop="code">
+        <el-form-item label="验证码" prop="captchaImgBase64Code">
           <div class="flex">
-            <el-input v-model="form.code"></el-input>
-            <img :src="captchaImg" @click="getCaptcha" />
+            <el-input v-model="form.captchaImgBase64Code"></el-input>
+            <img :src="captchaImgBase64" @click="getCaptcha" />
           </div>
         </el-form-item>
         <div style="margin-bottom: 10px">
@@ -63,11 +63,11 @@ export default {
       form: {
         username: "",
         password: "",
-        code: "",
+        captchaImgBase64Code: "",
       },
       loading: false,
-      captchaImg: "",
-      token: "",
+      captchaImgBase64: "",
+      captchaToken: "",
       //   formInfo: {
       //     list: [
       //       {
@@ -124,8 +124,8 @@ export default {
   methods: {
     getCaptcha() {
       this.$api.user.getCaptcha({}).then((res) => {
-        this.captchaImg = res.data.captchaImg;
-        this.token = res.data.token;
+        this.captchaImgBase64 = res.data.captchaImgBase64;
+        this.captchaToken = res.data.captchaToken;
       });
     },
     doLogin() {
@@ -147,12 +147,12 @@ export default {
       //       console.log(err);
       //     }
       //   );
-      let data = Object.assign({ token: "aaaaa" }, this.form);
+      let data = Object.assign({ captchaToken: this.captchaToken }, this.form);
       this.$api.user.login(data, { headers: true }).then(
         (res) => {
           this.loading = false;
           const jwt = res.headers["authorization"];
-          Cookie.set("token", jwt, 7955078400000); //登录成功 存token
+          Cookie.set("token", "Bearer " + jwt, 7955078400000); //登录成功 存token
           this.$router.push({
             path: "/base",
           });

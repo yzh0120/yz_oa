@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("com.markerhub.mapper")
+@MapperScan("com.yz.oa.mapper")
 public class MybatisPlusConfig {
     //mybatis拦截器
     @Bean

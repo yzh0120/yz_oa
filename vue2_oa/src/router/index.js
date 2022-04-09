@@ -55,7 +55,7 @@ router.beforeEach(async (to, from, next) => {
 					});
 					// let arr =await Promise.all([
 					Promise.all([
-						api.user.sysUserInfo({},other),//token 在头部
+						api.user.getUserInfo({},other),//token 在头部
 						new Promise((resolve )=>{
 							setTimeout(function(){
 								resolve('随便什么数据');
