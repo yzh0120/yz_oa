@@ -3,6 +3,7 @@ package com.yz.oa.entity;
 import java.time.LocalDateTime;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,6 +24,8 @@ public class User  {
 
     private String username;
 
+    //使用@JsonIgnore注解，忽略此属性，前端不会拿到该属性
+    @JsonIgnore
     private String password;
 
     private Integer age;
