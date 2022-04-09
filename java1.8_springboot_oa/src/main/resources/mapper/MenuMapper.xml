@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yz.oa.mapper.MenuMapper">
+<!--    <select id="selectPageVO" resultType="Menu">-->
+<!--        select * from table_demo where Bank_of_deposit = #{someOne}-->
+<!--    </select>-->
+</mapper>

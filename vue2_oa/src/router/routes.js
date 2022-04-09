@@ -22,6 +22,7 @@ import icon from "./modules/icon.js"
 import menu from "./modules/menu.js"
 import otherTable from "./modules/otherTable.js"
 import tabs from "./modules/tabs.js"
+import system from "./modules/system.js"
 
 import {status} from "./modules/status.js"
 const routes = [
@@ -66,7 +67,7 @@ const routes = [
 	},
 	...status,//状态和登录页
 	
-	
+	system,
 
 	scoped,//用户权限
 	
@@ -88,7 +89,8 @@ const routes = [
 	icon,
 	print,
 	base,//基础
-	menu//多级菜单
+	menu,//多级菜单
+	
 	
 
 ]

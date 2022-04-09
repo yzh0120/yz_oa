@@ -21,9 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/user")
 public class UserController extends BaseController {
 
-
-
-
     /*
     * 用户获取验证码
     * */

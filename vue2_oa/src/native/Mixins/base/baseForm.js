@@ -91,5 +91,19 @@ export default {
 			}
 			
 		},
+		_setList(formInfo,fieldValue,valueObj,keyValue){
+			if(this.$fn.type(valueObj) == "obj"){//this._set(this.addApplyForm, "degreeType", { opt: data,xxx:xxx });
+				formInfo.list.forEach((item)=>{
+					if(item.field == fieldValue){
+						for(let key of Object.keys(valueObj)){
+							item[key] = valueObj[key]
+						}
+					}
+				})
+			}else{
+				this.$message.error("_set 值错误")
+			}
+			
+		},
 	}
 }

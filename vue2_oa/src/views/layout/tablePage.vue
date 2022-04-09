@@ -2,25 +2,23 @@
   <page>
     <!-- 表单 -->
     <base-form :data="formInfo">
-	    <template #button>
-	  			<el-button  type="primary" @click="getData(true)" native-type="submit">搜索</el-button>
-	  	</template>
+      <template #button>
+        <el-button type="primary" @click="search" native-type="submit"
+          >搜索</el-button
+        >
+      </template>
     </base-form>
 
     <!-- 表格 -->
     <base-table :data="table" :pager="pagerData"></base-table>
 
     <!-- 分页 -->
-    <pager
-      :data="pagerData"
-      @pageChange="getData()"
-      @sizeChange="getData()"
-    />
+    <pager :data="pagerData" @pageChange="getData" @sizeChange="getData" />
   </page>
 </template>
 
 <script>
-	// import * as config from "@/tools/config.js"
+// import * as config from "@/tools/config.js"
 export default {
   data() {
     let self = this;
@@ -38,29 +36,29 @@ export default {
       },
 
       table: {
-				  head: [
-				    {
-				      field: "Bank_of_deposit",
-				      title: "开户行",
-				    },
-				    {
-				      field: "account",
-				      title: "账号",
-				    },
-				    {
-				      field: "Total_amount",
-				      title: "总金额",
-				    },
-				    {
-				      field: "remark",
-				      title: "备注",
-				    },
-				  ],
-				  data: [],
-				  height:self.h,
-				  loading:true,
-				  index:true,
-				},
+        head: [
+          {
+            field: "Bank_of_deposit",
+            title: "开户行",
+          },
+          {
+            field: "account",
+            title: "账号",
+          },
+          {
+            field: "Total_amount",
+            title: "总金额",
+          },
+          {
+            field: "remark",
+            title: "备注",
+          },
+        ],
+        data: [],
+        height: self.h,
+        loading: true,
+        index: true,
+      },
       pagerData: {
         pageNo: 1, //第一页
         pageSize: 20, //每页显示20张
@@ -69,11 +67,14 @@ export default {
     };
   },
   mounted() {
-    this.getData(true);
+    this.getData();
   },
   methods: {
-    getData(isSearch) {
-	  isSearch && (this.pagerData.pageNo = 1);
+    search() {
+      this.pagerData.pageNo = 1;
+      this.getData();
+    },
+    getData() {
       let other = {
         load: {
           obj: this.table,
@@ -81,10 +82,12 @@ export default {
           // text:'自定义'
         },
       };
-      this.$api.table.pager({ pagerData: this.pagerData },other).then((res) => {
-        this.table.data = res.data;
-        this.pagerData.total = res.total;
-      });
+      this.$api.table
+        .pager({ pagerData: this.pagerData }, other)
+        .then((res) => {
+          this.table.data = res.data;
+          this.pagerData.total = res.total;
+        });
 
       console.log(this.pagerData.pageNo, "当前页面数");
       console.log(this.pagerData.pageSize, "页面显示条数");
@@ -106,14 +109,14 @@ export default {
       // 	)
       // }
     },
-	event(e){
-		if(e.event == "checkbox"){ 
-			console.log(e.value)
-		}
-		if(e.event == "radio"){
-			console.log(e.value)
-		}
-	}
+    event(e) {
+      if (e.event == "checkbox") {
+        console.log(e.value);
+      }
+      if (e.event == "radio") {
+        console.log(e.value);
+      }
+    },
   },
 };
 </script>

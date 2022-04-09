@@ -1,5 +1,6 @@
 package com.yz.oa.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -16,7 +17,7 @@ import lombok.EqualsAndHashCode;
  * @since 2022-04-09
  */
 @Data
-public class User  {
+public class User  implements Serializable {
 
     //private static final long id = 1L;//serialVersionUID
     @TableId(value = "id")
