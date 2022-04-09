@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			input{
+				outline-style: none; /* 取消 点击输入input时外边框变粗*/
+				
+				border: 1px solid #ccc; ;          /* 设置 input的边框*/
+				border-radius: 3px;
+				
+				padding: 13px 14px;
+				width: 620px;
+				
+				font-size: 14px; /* 设置输入框内的字体大小*/
+				font-family: "Microsoft soft";   /* 设置字体家族*/
+				font-weight: 700;
+			}
+			
+			/* 设置输入框点击发光效果 */
+			input:focus{
+			    border-color: #66afe9;
+			    outline: 0;
+			    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+			}
+			
+		</style>
+	</head>
+	<body>
+		<input type="text" placeholder="输入框默认内容">
+	</body>
+</html>

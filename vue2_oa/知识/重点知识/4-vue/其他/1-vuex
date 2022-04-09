@@ -1,0 +1,40 @@
+/在组件实例中 vuex会自动挂载到vue原型上
+	this.$store.state.stateData
+	this.$store.commit('mutations_fn',参数);
+	this.$store.getters.getters_fn  
+	this.$store.dispatch('actions_fn',参数)
+	
+	//这种最好
+	this.$store.state.baseData.stateData
+	this.$store.commit('baseData/mutations_fn',参数)
+	this.$store.getters['baseData/getters_fn']
+	this.$store.dispatch('baseData/actions_fn',参数)
+	
+	
+	this.$store._modulesNamespaceMap['baseData/'].context.state.stateData
+	this.$store._modulesNamespaceMap['baseData/'].context.commit('mutations_fn', 参数)
+	this.$store._modulesNamespaceMap['baseData/'].context.getters.getters_fn
+	this.$store._modulesNamespaceMap['baseData/'].context.dispatch('actions_fn', 参数)
+
+辅助函数
+
+	...mapState(['stateData']),                          变量
+	...mapMutations(['mutations_fn']),                   -->this.mutations_fn(参数)
+	...mapGetters(['getters_fn']),                       变量
+	...mapActions(["actions_fn"]),                       -->this.actions_fn(参数)     
+	 
+	
+	...mapState('baseData',['stateData']),                变量
+	...mapMutations('baseData',['mutations_fn']),         -->this.mutations_fn(参数)
+	...mapGetters('baseData',['getters_fn']),			  变量
+	...mapActions('baseData',['actions_fn']),    		  -->this.actions_fn(参数)
+	
+
+	...baseData.mapState(['stateData']),			      变量
+	...baseData.mapMutations(['mutations_fn']),           -->this.mutations_fn(参数)
+	...baseData.mapGetters(['getters_fn']),				  变量
+	...baseData.mapActions(["actions_fn"]),               -->this.actions_fn(参数)
+ 
+---------------------------------------------------------------------------
+import {createNamespacedHelpers , mapState,mapMutations,mapActions,mapGetters} from 'vuex'
+const vuexDemo = createNamespacedHelpers('vuexDemo')

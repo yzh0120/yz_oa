@@ -1,0 +1,72 @@
+
+
+/* 设置容器高度*************************************/
+
+
+.el-header {
+    height: auto !important;
+    padding: 0 !important;
+}
+/*背景颜色 不重要**************************************/
+.el-main {
+    // background-color:$elMain;
+}
+.el-header {
+}
+.el-container {
+}
+.el-aside {
+	display: flex;//没有侧边栏   返回就删
+	flex-direction: column;//没有侧边栏     返回就删
+}
+
+// 内部外层布局
+.app_main{
+    height: 100%;
+    width: 100%;
+    // position: relative;
+    overflow: hidden;//transition
+    //page组件 的内边距
+	>.el-scrollbar{
+		>.el-scrollbar__wrap.scrollbarPage{
+			>.el-scrollbar__view{
+				padding: $normal_spacing calc(#{$normal_spacing} * 1.2);//margin: calc(#{$normal_spacing} / 1.5) $normal_spacing;
+			}
+		}
+		// >.el-scrollbar__wrap.scrollbarTablePage{
+		// 	>.el-scrollbar__view{
+		// 		height: 100%;
+		// 		// background-color: forestgreen;
+		// 	}
+		// }
+	}	
+	
+	// 普通页面
+	.page {//page
+	  min-height: calc(100% - calc(#{$normal_spacing} * 2));
+	  // margin: $normal_spacing calc(#{$normal_spacing} * 1.2);//margin: calc(#{$normal_spacing} / 1.5) $normal_spacing;
+	  background-color: white;
+	  padding:calc(#{$normal_spacing} / 1.5) $normal_spacing;
+	  overflow: auto; //内容溢出滚动
+	  // box-shadow: #ccc 0px 0px 10px;
+	  border-radius: 6px;
+	}
+	.page.show{
+		margin:0;
+		// background-color: $elMain;
+		// border-radius: 0px;
+		box-shadow: #ccc 0px 0px 0px !important; 
+	}
+
+	
+	//表格页面  作废了
+	// .table-page {
+	// 	height: calc(100% - #{$normal_spacing} - #{$normal_spacing});
+	// 	margin: $normal_spacing calc(#{$normal_spacing} * 1.2);;//margin: calc(#{$normal_spacing} / 1.5) $normal_spacing;
+	// 	background-color: white;
+	// 	padding:  0 calc(#{$normal_spacing} / 1.5) ;//calc(#{$normal_spacing} / 1.5) $normal_spacing;
+	// 	overflow: auto; //内容溢出隐藏
+	// 	// box-shadow: #ccc 0px 0px 10px;
+	// 	border-radius: 6px;
+	//   }
+}

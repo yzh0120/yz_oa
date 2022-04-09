@@ -1,0 +1,19 @@
+
+
+
+.el-scrollbar__wrap{
+          overflow: auto;
+}
+
+.el-card{
+			margin-bottom:  20px !important;
+		}
+
+.el-pagination{
+	margin-top: 10px;
+}
+
+//modal  和 校验提示的bug 
+.vxe-modal--body .el-form-item__error{
+	top: 18px !important;
+}

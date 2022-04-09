@@ -1,0 +1,15 @@
+1 beforeCreate vue实例刚刚在内存中创建出来 ,但是data并未初始化
+
+2 created      实例已经创建完成 data也已经初始化完成了,可以通过this来访问属性了
+
+3 beforeMount  完成了el的初始化 模板已经编译好了 但是没有挂载到页面上
+
+4 mounted     编译好的模板已经挂载到页面上了
+
+5 beforeUpdate date里面的数据已经是最新的 只是没有同步到页面上去
+
+6 updated     最新的数据同步到页面上去
+
+beforeDestroy 实例在被销毁之前触发
+
+destroyed 实例销毁之后调用 实例绑定的所有事件 以及子实例都会被销毁

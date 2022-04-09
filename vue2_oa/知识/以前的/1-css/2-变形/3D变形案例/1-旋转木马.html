@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				/* 
+				 默认值是none表示无3D效果，即2D扁平化
+				 perspective: 3000px 就是我们眼睛距离屏幕3000px时观看到的效果。呈现在显示器中
+				 perspective只能设px值，不能设%百分比
+				 建议写在顶层                   !!!!!!!!!!!!!!!!!!!!!!!
+				 */
+				perspective: 3000px;
+				/* perspective-origin:900%; */
+				/* 
+				 建议每一个涉及3D的元素都加一个 !!!!!!!!!!!!!!!!!!!!!!!
+				 */
+				transform-style: preserve-3d;
+			}
+			/* 容器 */
+			._container{
+				width: 300px;
+				height: 150px;
+				margin: 100px auto;
+				transition-duration: 1s;
+				/* 指定3D舞台 */
+				transform-style: preserve-3d;
+				/* 沿着X轴旋转 ,能看到后面的图片 */
+				transform: rotateX(-10deg)
+			}
+			img{
+				transform-style: preserve-3d;
+				width: 300px;
+				height: 150px;
+				position: absolute;
+				cursor: pointer;
+			}
+			/*  
+				rotateY 是为了让图片沿着Y轴在不同的方向排列,虽然是紧紧按着一起的,
+				可以通过translateZ 设置图片到原点的距离
+				translateZ的值 = img的width的一半 / tan22.5
+			*/
+			img:nth-child(1){transform: rotateY(0deg) translateZ(482.86px); }
+			img:nth-child(2){transform: rotateY(45deg) translateZ(482.86px); }
+			img:nth-child(3){transform: rotateY(90deg) translateZ(482.86px); }
+			img:nth-child(4){transform: rotateY(135deg) translateZ(482.86px); }
+			img:nth-child(5){transform: rotateY(180deg) translateZ(482.86px); }
+			img:nth-child(6){transform: rotateY(225deg) translateZ(482.86px); }
+			img:nth-child(7){transform: rotateY(270deg) translateZ(482.86px); }
+			img:nth-child(8){transform: rotateY(315deg) translateZ(482.86px); }
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="_container">
+			        <img src="../imgs/head75.jpg"/>
+			        <img src="../imgs/head75.jpg"/>
+			        <img src="../imgs/head75.jpg"/>
+			        <img src="../imgs/head75.jpg"/>
+			        <img src="../imgs/head75.jpg"/>
+			        <img src="../imgs/head75.jpg"/>
+			        <img src="../imgs/head75.jpg"/>
+			        <img src="../imgs/head75.jpg"/>
+			</div>
+			
+		</div>
+		
+	</body>
+	
+	<script>
+		let x = 0;
+		let _container = document.getElementsByClassName("_container")[0];
+		//滚动函数
+		function roll(){
+			x  = x - 45;      
+			/* 实际上旋转的是 容器 */
+			_container.style.transform = `rotateX(-10deg) rotateY(${x}deg)`
+				   console.log(x)
+		}
+		
+		setInterval(roll,2000);
+	</script>
+</html>

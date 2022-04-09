@@ -1,0 +1,73 @@
+/* 
+ 
+因为文章内含有很多sass代码，如需自己动手查看编译结果，推荐使用sassmeister这款在线编译工具 
+https://www.sassmeister.com/
+ 
+ */
+
+
+/* 
+画三角形
+ 入参:
+ $width:三角形的宽度
+ $direction : 三角形的方向
+ $color:三角形的颜色
+ 调用例子:
+ @include triangle(100px,left,green);
+ */
+@mixin triangle($width:100px,$direction:top,$color:$bgBlueLight) {
+	height: 0;
+	width: 0;
+	border: $width solid transparent;
+	@if ($direction == top) { // 上三角
+	border-bottom-color: $color;
+	}
+	@if ($direction == bottom) { // 下三角
+	border-top-color: $color;
+	}
+	@if ($direction == left) { // 左三角
+	border-right-color: $color;
+	}
+	@if ($direction == right) { // 右三角
+	border-left-color: $color;
+	}
+}
+
+
+/* 
+ 颜色渐变
+ 入参:
+ $direction:渐变颜色的方向
+ $color...:渐变颜色 参数不固定
+ 调用例子:
+ @include linear-gradient(left,red,green,blue)
+ */
+
+@mixin linear-gradient($direction:bottom,$color...) {
+  //background: -webkit-linear-gradient($direction,$colorTop, $colorCenter, $colorBottom); /* Safari 5.1 - 6.0 */
+  //background: -o-linear-gradient($direction, $color); /* Opera 11.1 - 12.0 */
+  //background: -moz-linear-gradient($direction, $color); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to $direction, $color); /* 标准的语法 */
+}
+
+/* css3动画
+	调用例子:
+	$an1:(width:20px,height:20px);
+	$an2:(width:100px,height:100px);
+	$demo:( 0%:$an1, 50%:$an2, 100%:$an2 );
+	@include keyframes($demo,demo,demo 2s); 
+ */
+
+@mixin keyframes($obj,$name,$animate) {
+	animation: $animate;
+	
+	@keyframes #{$name} {
+		@each $i,$val in $obj {
+			#{$i} {
+				@each $v1,$val2 in $val {
+					#{$v1}:$val2;
+				}
+			}
+		}
+	}
+}

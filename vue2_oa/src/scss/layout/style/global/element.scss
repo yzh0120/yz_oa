@@ -1,0 +1,63 @@
+.el-tabs__active-bar{
+		background-color: $primaryColor ;
+	}
+	 .el-button--primary:not(.is-disabled), 
+	 .el-checkbox__input.is-checked .el-checkbox__inner, 
+	 .el-checkbox__input.is-indeterminate .el-checkbox__inner, 
+	 .el-pagination.is-background .el-pager li:not(.disabled).active, 
+	 .el-radio__input.is-checked .el-radio__inner, 
+	 .el-date-table td.current span,
+	 .available.in-range.start-date span,
+	 .available.in-range.end-date span,
+	 .el-switch.is-checked .el-switch__core {
+	    background: $primaryColor ;
+	    border-color: $primaryColor ;
+	}
+	.el-textarea__inner:focus,
+	.el-input__inner:focus,
+	.el-checkbox__input:hover .el-checkbox__inner, 
+	.el-checkbox__input:visited .el-checkbox__inner, 
+	.el-checkbox__input.is-focus .el-checkbox__inner,
+	.el-select .el-input.is-focus .el-input__inner,
+	.el-select .el-input .el-input__inner:hover,
+	.el-button--default:not(.el-button--primary):active,
+	.el-button--default:not(.el-button--primary):focus, 
+	.el-button--default:not(.el-button--primary):hover,
+	.el-radio__input:hover .el-radio__inner{
+		border-color: $primaryColor ;
+	}
+	 .el-select-dropdown__item.selected,
+	 .el-select-dropdown.is-multiple .el-select-dropdown__item.selected,
+	 .el-pagination.is-background .el-pager li:not(.disabled):hover,
+	 .el-button--default:not(.el-button--primary):active, 
+	 .el-button--default:not(.el-button--primary):focus, 
+	 .el-button--default:not(.el-button--primary):hover, 
+	 .el-button--text, 
+	 .el-cascader-node.in-active-path, 
+	 .el-cascader-node.is-active, 
+	 .el-cascader-node.is-selectable.in-checked-path, 
+	 .el-checkbox__input.is-checked+.el-checkbox__label, 
+	 .el-dropdown-menu__item:focus, 
+	 .el-dropdown-menu__item:not(.is-disabled):hover, 
+	 .el-loading-spinner .el-loading-text, 
+	 .el-loading-spinner i, 
+	 .el-radio-button__orig-radio:not(:checked)+.el-radio-button__inner:hover, 
+	 .el-radio__input.is-checked+.el-radio__label, 
+	 .el-tabs__item.is-active, 
+	 .el-tabs__item:hover, 
+	 .el-tag:not(.el-tag--danger):not(.el-tag--success):not(.el-tag--info):not(.el-tag--warning), 
+	 .el-upload--picture-card:hover, 
+	 .el-date-table td.today span,
+	 .el-date-table td:hover,
+	 .el-switch__label.el-switch__label--left.is-active,
+	 .el-switch__label.el-switch__label--right.is-active,
+	 .el-upload:focus {
+	    color: $primaryColor ;
+	}
+	.el-loading-spinner .path{
+		stroke:$primaryColor ;
+	}
+	// 抵消换肤带来的副作用
+	.el-pagination.is-background .el-pager li.active:hover{
+		color:white ;
+	}

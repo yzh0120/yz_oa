@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#main{
+				position:fixed;
+				height: 200px;
+				width: 50px;
+				background-color: #008000;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			
+		</div>
+	</body>
+	<script>
+		
+		let lastPositon = 0
+		let main = document.getElementById('main')
+		//两次滚动的差距
+		function getDisparity(e){
+			return e.touches[0].pageY- lastPositon
+		}
+		//兼容获取样式表
+		 function getStyle(element,cssPropertyName){
+		            if(window.getComputedStyle){//如果支持getComputedStyle属性（IE9及以上，ie9以下不兼容）
+		                return window.getComputedStyle(element)[cssPropertyName];
+		            }else{//如果支持currentStyle（IE9以下使用），返回
+		                return element.currentStyle[cssPropertyName]; 
+		            }
+		}
+		// 开始触摸事件
+		main.addEventListener("touchstart", function(e){
+				lastPositon = e.touches[0].pageY
+				console.log(e.touches[0].pageY,'触摸开始')
+		})
+		//触摸过程事件
+		main.addEventListener("touchmove", function(e){
+			console.log(e.touches[0].pageY- lastPositon,parseInt(main.style.top || 0) ,'----------' )
+			main.style.top =  getDisparity(e) +  parseInt(getStyle(main,"top") || 0)  + 'px' 
+			lastPositon = e.touches[0].pageY
+			// console.log(main.style.top,'main.style.top' )
+		})
+		//触摸结束事件
+		main.addEventListener("touchend", function(e){
+			console.log(e,'触摸结束')
+		})
+		
+	</script>
+</html>
+<!-- 
+JS中的触摸事件
+ https://blog.csdn.net/qq_27870421/article/details/89436028
+ -->
+ 
+ <!-- 
+ 
+ 
+  
+  1 如果只是在外联或者内联的css样式表里面定义了top
+  但是在ele.style.top访问确实'',因为style表示的是 行内样式,所以无法查询到外联或者内联的css样式表
+  
+  2即使 main 里面的style和class属性没有定义 left,依然可以使用
+  main.style.left 设置
+  
+  3 document.defaultView.getComputedStyle(main,null).top//获取样式,不能设置
+  
+  document.defaultView.getComputedStyle(element[,pseudo-element]);  
+  或者
+  window.getComputedStyle(element[,pseudo-element]);
+  首先是有两个参数，元素和伪类。第二个参数不是必须的，当不查询伪类元素的时候可以忽略或者传入 null。
+ -->

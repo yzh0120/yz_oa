@@ -1,0 +1,10 @@
+https://echarts.apache.org/zh/option.html#tooltip.formatter
+
+旧版
+https://echarts.apache.org/v4/zh/option.html#tooltip
+
+
+
+
+
+.replace(/\n|\r\n/gi,'<br/>')

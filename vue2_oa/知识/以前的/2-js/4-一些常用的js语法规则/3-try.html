@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//做饭 
+		function startCook(){ 
+			console.log('开始做饭中...')
+			var p = new Promise(function(resolve, reject){ //做一些异步操作
+			  setTimeout(function(){ 
+				console.log('做饭完毕！')
+				// resolve('鸡蛋炒饭'); 
+				reject('错了')
+			  }, 1000)
+			}); 
+			return p
+
+			// setTimeout(function(){
+			//   console.log('做饭完毕！'); 
+			//   // resolve('鸡蛋炒饭'); 
+			// 	return 	Promise.reject('错了')
+			// }, 1000)
+		} 
+
+		//吃饭 
+		function eat(data){
+			console.log('开始吃饭中...：菜是' + data); 
+			var p = new Promise(function(resolve, reject){ //做一些异步操作 
+			  setTimeout(function(){
+				console.log('吃饭完毕!')
+				resolve('一只碗和一双筷子')
+			  }, 1001); 
+			});
+			return p;
+		} 
+
+		// 洗碗
+		function wash(data){ 
+			console.log('开始洗碗中...：' + data)
+			var p = new Promise(function(resolve, reject){ //做一些异步操作 
+			  setTimeout(function(){ 
+				console.log('洗碗完毕!')
+				resolve('干净的碗筷')
+			  }, 1002)
+			}); 
+			return p
+		}
+		// 处理错误信息
+		function catchFn(err){
+		  console.log('错误信息：' + err)
+		  return err
+		}
+		/* throw 语句允许您创建自定义错误。
+		const $inject = () => {
+			const tempVar = inject(SymbolName);  
+			if (!tempVar) {    throw new Error(`Inject 应该在 Provide 之后被使用`);  }  
+			return tempVar 
+		} 
+		 
+		 */
+		async function myAsync(){
+			
+			//没有被catch的reject也会终止代码运行
+			// let res1 = await startCook()
+			// let res2 = await eat(res1)
+			// let res3 = await wash(res2)
+			// console.log(res3)
+			
+			try{//供测试的代码块  
+				let res1 = await startCook()
+				let res2 = await eat(res1)
+				let res3 = await wash(res2)
+				console.log(res3)
+			}catch(err){// 处理错误的代码块  
+				
+				console.log('错误信息：' + err)
+				return err
+			}finally{
+				
+			}
+		}
+		myAsync()
+
+	</script>
+	
+	
+	<script>
+		/* 
+		try{//供测试的代码块
+
+		}catch(err){// 处理错误的代码块  
+
+		}finally{//都会执行此代码
+			
+		}
+		
+		1、不管有没有异常，finally中的代码都会执行
+
+　　		2、当try、catch中有return时，finally中的代码依然会继续执行
+
+		3 finally中有return ,会有黄色警告 
+		
+		4  finally是在return后面的表达式运算之后执行的，此时并没有返回运算之后的值，而是把值保存起来，
+		 不管finally对该值做任何的改变，返回的值都不会改变，依然返回保存起来的值。
+		 也就是说方法的返回值是在finally运算之前就确定了的。
+		 !!!!!注意返回值得类型是基本数据类型,还是引用数据类型,引用数据类型会被finally改变值
+		 */
+		
+	</script>
+</html>
+
+

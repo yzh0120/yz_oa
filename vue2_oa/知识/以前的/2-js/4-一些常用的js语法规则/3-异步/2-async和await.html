@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//做饭 
+		function startCook(){ 
+			console.log('0s开始做饭中...')
+			var p = new Promise(function(resolve, reject){ //做一些异步操作
+			  setTimeout(function(){ 
+				console.log('1s后做饭完毕！')
+				// resolve('鸡蛋炒饭'); 
+				reject('错了')
+			  }, 1000)
+			}); 
+			return p
+
+			// setTimeout(function(){
+			//   console.log('做饭完毕！'); 
+			//   // resolve('鸡蛋炒饭'); 
+			// 	return 	Promise.reject('错了')
+			// }, 1000)
+		} 
+
+		//吃饭 
+		function eat(data){
+			console.log('1s后开始吃饭中...：菜是' + data); 
+			var p = new Promise(function(resolve, reject){ //做一些异步操作 
+			  setTimeout(function(){
+				console.log('2s后吃饭完毕!')
+				resolve('一只碗和一双筷子')
+			  }, 1000); 
+			});
+			return p;
+		} 
+
+		// 洗碗
+		function wash(data){ 
+			console.log('2s后开始洗碗中...：' + data)
+			var p = new Promise(function(resolve, reject){ //做一些异步操作 
+			  setTimeout(function(){ 
+				console.log('3s后洗碗完毕!')
+				resolve('干净的碗筷')
+			  }, 1000)
+			}); 
+			return p
+		}
+		// 处理错误信息
+		function catchFn(err){
+		  console.log('错误信息：' + err)
+		  return err
+		}
+		
+		// 有捕获错误的程序
+		
+		async function myAsync(){
+			let res1 = await startCook().catch(catchFn)
+			//1 startCook()直接reject('错了'),抛出错误
+			//2 后面的catch(catchFn)捕获错误,startCook()的reject('错了') 的参数依然作为了catch()实参,然后返回非promise对象,
+			//3 后面的await立即执行,catch() return的参数依然作为了eat()的实参
+
+			let res2 = await eat(res1).catch(catchFn)
+			let res3 = await wash(res2).catch(catchFn)
+			console.log(res3)
+		}
+		
+		//没有有捕获错误的程序
+		
+		// async function myAsync(){
+		// 	let res1 = await startCook()
+		// 	//startCook()直接reject('错了'),抛出错误,没有捕获错误的程序,直接结束程序运行
+		// 	let res2 = await eat(res1)
+		// 	let res3 = await wash(res2)
+		// 	console.log(res3)
+		// }
+		
+		myAsync()
+
+	</script>
+	
+	
+	<script>
+		/*  resolve和reject方法在 promise函数中 .有return的作用
+		 1 promise对象 会阻塞 await 的执行,否则立即执行,
+		 
+		 2 let res1 = await startCook().catch(catchFn)
+		    (1) 如果 startCook() 是 resolve('任何类型的数据'),则这个<任何类型的数据>都会作为下一个await紧接着的函数的回调函数的实参
+			(2) 如果 startCook() 是 reject('错了'),则报错被catch捕获,则catch()回调函数中return的任何类型的数据
+				会作为下一个await紧接着的函数的回调函数的实参
+		  
+		 */
+		
+	</script>
+</html>
+
+

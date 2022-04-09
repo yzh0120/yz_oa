@@ -1,0 +1,19 @@
+var arr3 = [{name: 'a',id: 1}, {name: 'a',id: 2}, {name: 'b',id: 3}, {name: 'c',id: 4},
+ {name: 'c',id: 6}, {name: 'b',id: 6}, {name: 'd',id: 7}];
+ 
+ 
+//es6 map 
+let deWeightThree = () => {
+    let map = new Map();
+    for (let item of arr3) {
+        if (!map.has(item.name)) {
+            map.set(item.name, item);
+        }
+    }
+    return [...map.values()];
+}
+
+
+
+
+let newArr3 = deWeightThree();

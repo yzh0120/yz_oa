@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#scroll{
+				padding: 10px;
+				border: 10px solid green;
+				width: 100px;
+				height: 100px;
+				overflow-y: scroll;
+			}
+			#container{
+				width: 100px;
+				height: 100px;
+				padding: 10px;
+				border: 10px solid green;
+			}
+			#position{
+				width: 100px;
+				height: 100px;
+				padding: 10px;
+				border: 10px solid red;
+				position: absolute;
+				top:200px;
+				left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			
+		</div>
+		
+		<div id="position">
+			定位
+		</div>
+		
+		<div id="scroll">
+			反反复复付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付
+			反反复复付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付
+			反反复复付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付
+			反反复复付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付
+			反反复复付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付
+			反反复复付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付
+		</div>
+	</body>
+	<script>
+		let container = document.getElementById('container');
+		//clientWidth 的值是 元素宽度 + 左右padding  
+		console.log(container.clientWidth,'container.clientWidth')
+		// clientTop  的值是    元素上border的宽度
+		console.log(container.clientTop,'container.clientTop')
+		// offsetWidth 的值是   元素宽度 + 左右padding + 左右border     
+		console.log(container.offsetWidth,'container.offsetWidth')
+		
+		
+		console.log('------------------------------------------------------------------------------')
+		
+		
+		let position = document.getElementById('position');
+		// offsetTop   的值是   元素距离的外border最近的定位父级的内border的距离 
+		console.log(position.offsetTop,'position.offsetTop')
+		
+		
+		console.log('------------------------------------------------------------------------------')
+		
+		
+		let scroll = document.getElementById('scroll');
+		//scrollHeight  的值是   可视区和被隐藏区的总体高度(里面文档的高度)
+		console.log(scroll.scrollHeight,'scroll.scrollHeight')
+		
+		scroll.scrollTop = 100
+		//scrollTop   的值是     可视区的上部到被隐藏去的上部的距离,文档上部被隐藏的长度 
+		console.log(scroll.scrollTop,'scroll.scrollTop')
+	</script>
+</html>
+<!-- 
+overflow-y: visible|hidden|scroll|auto|no-display|no-content; 
+ -->
+ 
+ <!-- 
+ <1>---------------------------------------------------------------------------------------------------------
+ clientWidth      元素宽度 + 左右padding            
+ clientHeight     元素高度 + 上下padding
+-----------------------------------
+ clientTop        元素上border的宽度
+ clientBottm      元素下border的宽度
+ clientLeft       元素左border的宽度
+ clientRight      元素右border的宽度
+ 
+ 
+<2>---------------------------------------------------------------------------------------------------------
+ offsetWidth      元素宽度 + 左右padding + 左右border               
+ offsetHeight     元素高度 + 上下padding + 上下border
+-----------------------------------
+ offsetTop        元素距离的上外边框最近的定位父级的上内边框的距离         
+ offsetBottom     元素距离的下外边框最近的定位父级的下内边框的距离
+ offsetLeft       元素距离的左外边框最近的定位父级的左内边框的距离
+ offsetRight      元素距离的右外边框最近的定位父级的右内边框的距离
+ 
+ 
+<3>---------------------------------------------------------------------------------------------------------
+ scrollWidth      可视区和被隐藏区的总体宽度(里面文档的宽度)             
+ scrollHeight     可视区和被隐藏区的总体高度(里面文档的高度) 
+-----------------------------------可设置 唯一一个可写可读的
+ scrollTop        可视区的上部到被隐藏去的上部的距离
+ scrollBottm      可视区的下部到被隐藏去的下部的距离
+ scrollLeft       可视区的左部到被隐藏去的左部的距离
+ scrollRight      可视区的右部到被隐藏去的右部的距离
+-----------------------------------
+ 
+ 
+ -->

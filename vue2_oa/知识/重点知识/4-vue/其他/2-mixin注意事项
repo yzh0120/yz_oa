@@ -1,0 +1,1 @@
+mixin 中无法获取this._xxx字段  只能获取this.xxx

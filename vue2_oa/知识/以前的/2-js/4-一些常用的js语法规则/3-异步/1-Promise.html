@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//做饭 
+		function startCook(){ 
+			console.log('0s开始做饭中...')
+			var p = new Promise(function(resolve, reject){ //做一些异步操作
+			  setTimeout(function(){ 
+				console.log('1s做饭完毕！')
+				// resolve('鸡蛋炒饭'); 
+				reject('错了')
+			  }, 1000)
+			}); 
+			return p
+		} 
+
+		//吃饭 
+		function eat(data){
+			console.log('1s开始吃饭中...：菜是' + data) 
+			var p = new Promise(function(resolve, reject){ //做一些异步操作 
+			  setTimeout(function(){
+				console.log('2s吃饭完毕!')
+				resolve('一只碗和一双筷子')
+			  }, 1000) 
+			})
+			return p
+		} 
+
+		// 洗碗
+		function wash(data){ 
+			console.log('2s开始洗碗中...：' + data)
+			var p = new Promise(function(resolve, reject){ //做一些异步操作 
+			  setTimeout(function(){ 
+				console.log('3s洗碗完毕!')
+				resolve('干净的碗筷')
+			  }, 1000)
+			}); 
+			return p
+		}
+		// 处理错误信息
+		function catchFn(err){
+		  console.log('错误信息：' + err)
+		  return err
+		}
+		  
+		  
+		// 有捕获错误的程序
+		
+		startCook().catch(catchFn)
+		//1 startCook()直接reject('错了'),会抛出错误,导致警戒着的then不执行,
+		//2 后面的catch捕获到错误,startCook()的reject('错了') 的参数依然作为了catch()实参,然后返回非promise对象,
+		//3 后面的then会在catch结束后立即执行,catch() return的参数依然作为了eat()的实参
+		.then(eat).catch(catchFn)
+		.then(wash).catch(catchFn)
+		.then(
+			(data)=>{
+				 console.log(data); 
+			}
+		)
+		
+		//没有有捕获错误的程序
+		
+		//  startCook()  //如果等待的promise是reject状态,会抛出错误,如果没有捕获错误,导致js停止运行
+		//  .then(eat)  
+		//  .then(wash)
+		//  .then(
+		//  	(data)=>{
+		//  		 console.log(data); 
+		//  	}
+		//  )
+		 
+		
+
+	</script>
+	
+	<script>
+		/**  resolve和reject方法在 promise函数中 .有return的作用
+		1 promise有两个关键的函数 1 then() 2 catch()
+		
+		2 执行完毕会返回一个新Promise对象, 所以then后面可以继续跟一个then方法进行链式调用， 
+		 
+		3 如果then方法的回调函数不管return什么数据类型，这个数据都会作为下一个then的回调函数的实参，
+		  如果不需要返回数据，则return可不写,后面then() 就没有实参了
+		  (1)   then方法的回调函数有返回Promise对象,则阻塞 后面then()的执行
+		  (2)   then方法的回调函数返回非Promise对象,则后面then()立即执行 
+		*/
+	</script>
+</html>
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!--
+		防止margin重叠我们就可以从BFC的特征入手，让2个相邻的元素不是属于一个BFC,需要添加新的div包裹其中一个div
+			<div class="container1">
+				<div class="first">first p</div>
+				<div style="overflow:hidden">
+					<div class="second">second p</div>
+				</div>
+			</div>
+		 -->
+		<style>
+			.container1 {
+				color: #fff;
+			}
+		
+			.first {
+				margin-bottom: 50px;
+				padding-left: 10px;
+				height: 200px;
+				width: 200px;
+				background-color: #28adbd;
+				
+			   
+			}
+		
+			.second {
+				margin-top: 50px;
+				height: 200px;
+				width: 200px;
+				background-color: #6871c1;
+			}
+			</style>
+		</head>
+		<body>
+			<!-- <div class="container1">
+				<div class="first">first p</div>
+				<div class="second">second p</div>
+			</div> -->
+			
+			<div class="container1">
+				<div class="first">first p</div>
+				<div style="overflow:hidden">
+					<div class="second">second p</div>
+				</div>
+			</div>
+			
+			
+		</body>
+</html>

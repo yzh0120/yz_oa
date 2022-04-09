@@ -1,0 +1,20 @@
+//定义各种颜色
+$pink : #FFB6B9;
+
+$pink1 : #FAE3D9;
+
+$green : #FAE3D9;
+
+$blue : #8AC6D1;
+
+
+
+
+
+$normal_spacing:30px;//普通的间隔 适合 一般的padding 和margin
+
+//$layout_spacing:16px;//普通的间隔 适合 一般的padding 和margin
+
+:export {
+	normal_spacingt: $normal_spacing;
+}

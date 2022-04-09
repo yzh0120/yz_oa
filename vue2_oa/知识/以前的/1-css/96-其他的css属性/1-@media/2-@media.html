@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<!-- 
+ 
+ ---------------------------------------------------------
+ 
+ ---------------------------------------------------------
+ 
+ ---------------------------------------------------------
+  window.onresize = getRem;
+     function getRem(){
+         document.documentElement.style.fontSize = document.documentElement.offsetWidth / 20+'px';
+     }
+     getRem();
+ ---------------------------------------------------------
+ 
+ 
+ var width = document.documentElement.clientWidth;   // 屏幕的布局视口宽度
+ var rem = width / 7.5;                              // 750px设计稿将布局视口分为7.5份
+ var rem = width / 6.4;                              // 640px设计稿将布局视口分为6.4份
+ 
+ 这样不管是750px设计稿还是640px设计稿，1rem 等于设计稿上的100px。（比例相同）
+ 
+ 
+ @media   (min-width: 400px) and (max-width: 500px) {
+   div.example {
+     display: none;
+   }
+ }
+ 
+ and两边必须有空格
+ ---------------------------------------------------
+ 从上面我们可以看出有几个临界点的分辨率，那么我们就可以轻松的来写自己的自适应代码了
+ 
+ @media (min-width: 768px){ //>=768的设备 }
+ 
+ @media (min-width: 992px){ //>=992的设备 }
+ 
+ @media (min-width: 1200){ //>=1200的设备 }
+ 
+ 注意下顺序，如果你把@media (min-width: 768px)写在了下面那么很悲剧，
+ 
+ @media (min-width: 1200){ //>=1200的设备 }
+ 
+ @media (min-width: 992px){ //>=992的设备 }
+ 
+ @media (min-width: 768px){ //>=768的设备 }
+ 
+ 因为如果是1440,由于1440>768那么你的1200就会失效。
+ 
+ 所以我们用min-width时，小的放上面大的在下面，同理如果是用max-width那么就是大的在上面，小的在下面
+ 
+ @media (max-width: 1199){ //<=1199的设备 }
+ 
+ @media (max-width: 991px){ //<=991的设备 }
+ 
+ @media (max-width: 767px){ //<=768的设备 }
+ -->

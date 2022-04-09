@@ -1,0 +1,38 @@
+ dom 在文档中的位置：dom。xxx  除了scrollTop类 其他都是只读
+ 1 client ： ***************************************************
+ clientWidth      元素宽度 + 左右padding
+ clientHeight     元素高度 + 上下padding
+ 
+ clientTop        元素上border的宽度
+ clientBottm      元素下border的宽度
+ clientLeft       元素左border的宽度
+ clientRight      元素右border的宽度
+ 
+ 2 offset ： ***************************************************
+  offsetWidth      元素宽度 + 左右padding + 左右border
+  offsetHeight     元素高度 + 上下padding + 上下border
+
+  offsetTop        元素距离的上外边框最近的定位父级的上内边框的距离         
+  offsetBottom     元素距离的下外边框最近的定位父级的下内边框的距离
+  offsetLeft       元素距离的左外边框最近的定位父级的左内边框的距离
+  offsetRight      元素距离的右外边框最近的定位父级的右内边框的距离
+  
+ 3 scroll ： ***************************************************
+   scrollWidth      可视区和被隐藏区的总体宽度(滚动条里面的文档的宽度)
+   scrollHeight     可视区和被隐藏区的总体高度(滚动条里面的文档的高度) 
+   
+   scrollTop        可视区的上部到被隐藏去的上部的距离  （可设置 唯一一个可写可读的）
+   兼容写法: let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+   scrollBottm      可视区的下部到被隐藏去的下部的距离
+   scrollLeft       可视区的左部到被隐藏去的左部的距离
+   scrollRight      可视区的右部到被隐藏去的右部的距离
+   
+   ps:
+   页面具有 DTD，或者说指定了 DOCTYPE 时，使用 document.documentElement。
+   
+   页面不具有 DTD，或者说没有指定了 DOCTYPE，时，使用 document.body。
+   
+   var scrollTop = window.pageYOffset  //用于FF
+                   || document.documentElement.scrollTop  
+                   || document.body.scrollTop  
+                   || 0;

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>  
+		*{
+			box-sizing: border-box;
+		}
+		.inlayer {  
+			width: 120px;  
+			height: 80px;  
+			position: relative;  /* 定位*/
+			border-radius: 10px;  
+			border: 1px #808080 solid;  
+			background-color: #fff;  
+		}  
+		   
+		  /* 核心代码是
+		  ::after的border比 ::before小 1px
+		  然后用::after 遮盖 ::before
+		  */
+		.inlayer:before {  
+			content: " ";  
+			position: absolute;  
+			top: 100%;  
+			left: 50px;  
+			width: 0;  
+			height: 0;  
+			border-left: 15px solid transparent;  
+			border-top: 15px solid #808080;  
+			border-right: 15px solid transparent; 
+		}  
+		   
+		.inlayer:after {  
+			content: " ";  
+			position: absolute;  
+			top: 100%;  
+			left: 51px;  
+			width: 0;  
+			height: 0;  
+			/* 核心代码 */
+			border-left: 14px solid transparent;  
+			border-top: 14px solid #fff;  
+			border-right: 14px solid transparent;  
+			/* 核心代码 */
+		}  
+		 
+		/* 悬浮背景没必要看 */
+		.inlayer:hover {  
+			background-color: #ff0000 !important;  
+		}  
+		   
+		.inlayer:hover:after {  
+			width: 0;  
+			height: 0;  
+			border-left: 14px solid transparent;  
+			border-top: 14px solid #ff0000;  
+			border-right: 14px solid transparent;  
+		}  
+		</style>
+		<style>
+			/* 这个是自己的测试 */
+			.demo{
+				margin: 100px;
+				/* width: 100px;
+				height: 100px; */
+				width: 0px;
+				/* background-color: red; */
+				/* border: 10px solid blue; */
+				
+				/* border-bottom: 14px solid red; */
+				border-left: 14px solid transparent;
+				border-top: 14px solid red;  
+				border-right: 14px solid transparent;  
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div  class="inlayer">  
+		空心三角形  
+		</div>  
+		
+		
+		<div class="demo"></div>
+	</body>
+</html>

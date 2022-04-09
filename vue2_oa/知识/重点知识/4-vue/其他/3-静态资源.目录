@@ -1,0 +1,11 @@
+配置文件
+publicPath: process.env.NODE_ENV === 'production' ? '/operateweb/' : '/',
+
+
+
+
+路由index
+const router = new VueRouter({
+  base: process.env.NODE_ENV === 'production' ? '/invitation/' : '/',
+  routes
+})

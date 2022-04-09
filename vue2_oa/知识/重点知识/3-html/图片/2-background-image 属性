@@ -1,0 +1,21 @@
+设置元素的背景图像
+
+1-使用 background-size:80px 60px 可以限制背景图片的大小 但是background-repeat默认是重复 (no-repeat)
+
+2-使用  background-position 定位background-image在父容器的位置
+
+	left top
+	left center
+	left bottom
+	right top
+	right center
+	right bottom
+	center top
+	center center
+	center bottom	如果仅指定一个关键字，其他值将会是"center"
+
+	x% y%	第一个值是水平位置，第二个值是垂直。左上角是0％0％。右下角是100％100％。如果仅指定了一个值，其他值将是50％。 。默认值为：0％0％
+
+	xpos ypos	第一个值是水平位置，第二个值是垂直。左上角是0。单位可以是像素（0px0px）或任何其他 CSS单位。如果仅指定了一个值，其他值将是50％。你可以混合使用％和positions
+
+	inherit	指定background-position属性设置应该从父元素继承

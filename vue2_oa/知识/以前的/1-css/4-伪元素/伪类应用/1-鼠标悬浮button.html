@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#draw-border {
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			  height: 100vh;
+			}
+			/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
+			.demo{
+
+				background-color: transparent;
+				border: 0;
+				color: #4361ee;
+				padding: 10px;
+				position: relative;
+				outline: none;
+				box-sizing: border;
+
+			}
+			.demo::before , .demo::after{
+				content: "";/* 相当于伪元素的内容 */
+				position: absolute;
+				border: 2px solid transparent;
+				width: 0;
+				height: 0;
+				box-sizing: inherit;
+			}
+			.demo::before{
+				top: 0;
+				left: 0;
+			}
+			.demo::after{
+				bottom: 0;
+				right: 0;
+			}
+			
+			
+			
+			.demo:hover::before,.demo:hover::after{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.demo:hover::before{
+				border-top-color: #4361ee;
+				border-right-color: #4361ee;
+				transition: width 0.3s ease-out, height 0.3s ease-out 0.3s;
+			}
+			.demo:hover::after{
+				border-bottom-color: #4361ee;
+				border-left-color: #4361ee;
+				transition: border-color 0s ease-out 0.6s, width 0.3s ease-out 0.6s, height 0.3s ease-out 0.9s,height 0.3s ease-out 1s;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<!-- <div class="demo1"></div> -->
+		
+		<div id="draw-border">
+		  <button class="demo">HOVER</button>
+		</div>
+	</body>
+</html>
+<!-- 
+ ::before 和 ::after 两个属性一模一样,只是名称不一样,就像两个 不同类型的span
+ -->

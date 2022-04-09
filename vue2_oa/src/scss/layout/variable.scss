@@ -1,0 +1,46 @@
+
+/*********************************************************************************************************
+导航栏系列
+*/
+// 导航栏展开的宽度
+$sideBarNoCollapseWidth:210px;//210
+
+// 导航栏收缩的宽度
+$sideBarIsCollapseWidth:54px;//54px
+// 导航栏和滚动组件收缩的宽度  比$sideBarIsCollapseWidth 小1px
+$menuIsCollapseWidth:calc(#{$sideBarIsCollapseWidth} - 1px); //53px
+
+
+//导航栏展开时title左边文字的margin
+$titileLeftIcon:-4px;//
+
+
+
+
+/*********************************************************************************************************
+tags系列
+*/
+//单个tag
+$tags-view-item:26px;
+//最外层的div高度    8px
+$tags-view-container:calc(#{$tags-view-item + 10px});//34px;//6px  就是tagsview 内部的长方形 距离 父元素底部的 bottom距离
+//这个高度必须比tags-view-item高 23px
+$el-scrollbar__wrap:calc(#{$tags-view-item + 23px});
+
+
+
+
+$elMain :  #f8f8f8;//#E9EEF3;//框架内部背景 颜色
+
+$head-top-height:50px;//面包屑头部的height
+$mobile-top : calc(#{$sideBarIsCollapseWidth} + 30px);//moblie 的top
+
+
+$sidebar-logo-container:50px;  //logo高度
+
+
+
+:export {
+	head_top_height: $head-top-height;// 头部
+	tags_view_item: $tags-view-item;//标签页
+}

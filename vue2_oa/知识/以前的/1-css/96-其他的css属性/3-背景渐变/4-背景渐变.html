@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.demo1{
+				width: 1000px;
+				height: 100px;
+				background-image: linear-gradient(to right, red, yellow,yellow,yellow,yellow,yellow);
+			}
+			
+			/* 彩虹字 */
+			.span1{
+				/* color: transparent; */
+				background: linear-gradient(to right, red, orange, yellow, green, yellow, orange, red, orange, yellow, green, yellow, orange, red);
+				 -webkit-background-clip: text;/*背景颜色以文本方式剪切背景*/
+				 color: transparent;
+			}
+			
+			/* .span1{
+				display: block;
+				width: 1000px;
+				height: 100px;
+				background-image: linear-gradient(to right, red, yellow,yellow,yellow,yellow,yellow);
+				-webkit-background-clip: text;
+				color: transparent;
+			} */
+		</style>
+	</head>
+	<body>
+		<div class="demo1"></div>
+		
+		<span class="span1">你好,世界</span>
+	</body>
+</html>
+<!-- 
+线性渐变 background-image: linear-gradient(to direction, color-stop1, color-stop2, ...); 
+
+不对称效果:
+background-image: linear-gradient(to right, red, yellow,yellow,yellow,yellow,yellow);
+
+
+ 
+ -->

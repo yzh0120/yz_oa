@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			/* .div1 {
+			    float: left;
+			    background-color: red;
+			    transform: perspective(200px) rotateY(45deg);
+			}
+			.div1 img{
+			    transform: perspective(2000px) translateZ(16px);
+			}
+			.p3d {
+			    transform-style: preserve-3d;
+				
+			} */
+			
+			.div1 {
+			    float: left;
+			    background-color: red;
+			    transform: perspective(200px) rotateY(45deg);
+				transform-style: preserve-3d;
+			}
+			.div1 img{
+			    transform:  translateZ(16px);
+			}
+			.father {
+				/* transform-style: preserve-3d; */
+			    perspective:200px
+				
+			}
+			
+			img{
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<!-- <div class="div1">
+			<img src="../head75.jpg" />
+		</div> -->
+		
+		
+		<div class="father0">
+			<div class="div1 p3d">
+				<img src="../head75.jpg" />
+			</div>
+		</div>
+		
+		
+		
+	</body>
+</html>
+
+<!-- transform-style: 指定舞台为2D或3D 
+ 1 这个属性比较简单只有两个值flat和preserve-3d。默认值flat表示2D
+ 
+ 
+ 2 建议在使用动画的时候,每一个都写一个
+ 在变形元素的直接舞台上(直接父元素)设置transform-style:preserve-3d,才能使用 改变视距的属性:
+
+ 
+ 
+ 3 如果同时设了transform-style: preserve-3d;和overflow: hidden;，3D效果将失效
+ 
+ -->
+ 
+ 
+ 
+ <!-- 
+ 视距的属性:
+ 1 transform:  translateZ(16px);
+ 2 backface-visibility: hidden;
+ -->
+ 
+ 
+ <!--
+  CSS3 transform介绍
+  https://www.jianshu.com/p/17e289fcf467
+  -->

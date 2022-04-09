@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			label > img{
+				width: 100px;
+				height: 100px;
+				object-fit: cover;
+			}
+			
+			input[type="file"]{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+
+		    <label class="inputstyle" for="imgUpload">
+				<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F18%2F03%2F07%2F2d9a152c1cdf83bb93c661cc908578ea.jpg&refer=http%3A%2F%2Fbpic.588ku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1617349131&t=3bed067a1b302ef35d4583c70e20f7ce" alt="">
+			</label>
+
+		
+		<!-- <iframe id="myiframe" name="myiframe" style="display:none;" onLoad="iframeLoad(this)"></iframe> -->
+		<!-- <form id="uploadPicForm" style="position: relative;margin: 0" action="safetyperformController/imgUpload" method="post" enctype="multipart/form-data" target="myiframe">
+		        <input id="fileId" name="fileId" type="hidden">
+		        <input id="imgUpload" class="imgUpload" type="file" name="file" multiple="true" size="28" accept="image/jpeg,image/png"/>
+		</form> -->
+		<input type="file" name="" id="imgUpload" value="" />
+	</body>
+</html>

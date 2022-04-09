@@ -1,0 +1,5 @@
+let { innerWidth,innerHeight } = window 
+
+
+pageXOffset 和 pageYOffset 属性返回    文档在窗口左上角水平和垂直方向滚动的像素。
+let { pageXOffset ,pageYOffset  } = window 

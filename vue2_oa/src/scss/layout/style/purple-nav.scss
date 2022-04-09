@@ -1,0 +1,392 @@
+
+.purple-nav{
+	/*
+	 CSS :root 声明全局变量,var()函数 (主题切换)
+		https://blog.csdn.net/qq_41560520/article/details/117918349?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link
+	 */
+	// 导航栏
+	$menuBg : rgb(240,240,240);//背景色
+	$color:rgb(141,141,141);
+	$primaryColor:rgb(117,102,245);
+	//侧边栏
+	.el-aside{
+		font-size: 14px;
+		font-weight: 500 ;
+		&{
+			*{
+				font-size: inherit ;
+				font-weight:inherit ;
+			}
+		}
+	}
+	//main主体
+	.el-main{
+		$bgc : white;//rgb(248,248,248);
+		font-size: 14px;
+		background-color: $bgc;
+		.linkFixedPage{
+			background-color: $bgc;
+			.left-main .left-item.active{
+				background:linear-gradient(to right,rgb(117,105,240), rgb(151,143,242));
+				color: white;
+			}
+		}
+		#page.page.show{
+			background-color: $bgc;
+		}
+		$shadow:#ccc;
+		#page.page {
+			box-shadow: $shadow 0px 0px 10px;
+		}
+		.table-page{
+			box-shadow: $shadow 0px 0px 10px;
+		}
+		.linkFixedPage{
+			.left{
+				box-shadow: $shadow 0px 0px 10px;
+			}
+			.right{
+				box-shadow: $shadow 0px 0px 10px;
+			}
+		}
+		
+	}
+	
+	/* ********************************************************************************************************************
+	导航栏 
+	*/
+	//侧边栏
+	.sidebar-container {
+	    background-color: $menuBg !important;//侧边栏背景色
+	}
+	//侧边栏 logo
+	.sidebar-logo-container{//logo div
+		background-color: white !important;
+		.sidebar-title{//标题
+			color: $primaryColor !important;
+		}
+	}
+	
+	//权重最低的 没有有子目录的一级目录
+	.el-menu-item{
+		font-weight: 500;//防止折叠的时候 字体是700
+		background-color: $menuBg !important;//背景色
+		color:$color;        //默认字体颜色
+		// font-weight: 500 !important;
+		svg{
+			color: $color;
+		};
+		&:hover {
+		  color: $primaryColor !important;    //字体颜色
+		  svg{
+			 color: $primaryColor !important;    //字体颜色 
+		  }
+		}
+	}
+	//权重最低的 有子目录的一级目录
+	.el-submenu__title{
+		background-color: $menuBg !important;  //背景色
+		color:$color ;        // 默认字体颜色
+		// font-weight: 500 !important;
+		svg{
+			color: $color;
+		};
+		&:hover {
+		  color: $primaryColor !important;    //字体颜色
+		  svg{
+			 color: $primaryColor !important;    //字体颜色 
+		  }
+		}
+	}
+	
+	//非一级的某行菜单栏
+	.el-submenu .el-menu-item {
+	    background-color: $menuBg !important; //背景色
+	    // font-weight: 500 !important;
+	    &:hover {
+	      color: $primaryColor !important;    //字体颜色
+	      svg{
+	    	 color: $primaryColor !important;    //字体颜色 
+	      }
+	    }
+	}
+	
+	// 某行激活的菜单栏
+	.el-menu li.is-active.el-menu-item{
+		color:white !important;    //字体激活颜色
+		background:  linear-gradient(to right,rgb(117,105,240), rgb(151,143,242)) !important;
+		& {
+			svg{
+				  		color: white !important;    //字体颜色 
+			}
+		}
+		&:hover {
+			svg{
+				  		color: white !important;    //字体颜色 
+			}
+		}
+	}
+	
+	//当点击了子菜单时的父菜单
+	.is-active > .el-submenu__title {
+	  //color: $color !important; //的文本颜色 
+	}
+	//手机状态下
+	.el-container>.mobile{
+		background:$menuBg;
+		// position: relative;
+		// z-index: 999;
+	}
+	
+	
+	/* ********************************************************************************************************
+	head-top 
+	*/
+	.head-top{
+		.el-breadcrumb{/* 面包屑 */
+			color: $primaryColor !important;
+			*{
+				color: inherit !important;
+			}
+			.el-breadcrumb__item:hover>.el-breadcrumb__inner>a{
+				color: $primaryColor !important;
+			}
+			/* 最后一个面包屑 */
+			.el-breadcrumb__item:last-child>.el-breadcrumb__inner>a{
+				color: $primaryColor  !important;
+			}
+			.el-breadcrumb__item:last-child:hover>.el-breadcrumb__inner>a{
+				color: $primaryColor  !important;
+			}
+		}
+		.el-dropdown{
+			color: $primaryColor !important;
+			*{
+				color: inherit !important;
+			}
+		}
+		// 设置按钮
+		.setup{
+			color: $primaryColor !important;
+			&:hover{
+				color: $primaryColor !important;
+				background-color: #f6f6f6;
+			}
+		}
+	}
+	/* ***************************************************************************************************************
+	tagView 
+	// 1 tags-view-container
+	// 2 scroll-container(在ScrollPane)
+	// 3 .tags-view-wrapper.el-scrollbar       4 .el-scrollbar__warp     5 .el-scrollbar__view      6.tags-view-item
+	*/
+	.tags-view-container{
+		//右键菜单
+		.contextmenu {
+			li {
+			  &:hover {
+			        background-color: #ecf5ff;
+			        color: $primaryColor !important;
+			  }
+			}
+		}
+		//某个item
+		.tags-view-item{
+			display: inline-block;
+			position: relative;
+			cursor: pointer;
+			height: $tags-view-item; //改item高度 就修改这个 3
+			line-height: $tags-view-item; //改item高度 就修改这个 4
+			border: 1px solid #d8dce5;
+			color: #495060;
+			background: #fff;
+			padding: 0 8px;
+			font-size: 12px;
+			margin-left: 5px;
+			margin-top: 4px;
+			border-radius: 2.5px;
+			transition: all .3s;
+			&:first-of-type {
+			  margin-left: 15px;
+			}
+			&:last-of-type {
+			  margin-right: 15px;
+			}
+			// 前面的圆点
+			&::before {
+			  content: "";
+			  background: $primaryColor;
+			  display: inline-block;
+			  width: 0px;
+			  height:0px;
+			  border-radius: 50%;
+			  position: absolute;
+			  transition: all .3s;
+			  top:0;bottom:0;left:0;right:0;
+			  margin:auto 10px;
+			  transform-origin: 50%;
+			  // transform: scale(0);
+			}
+			////////////////////////////////////////////////	  
+			&.active {
+				background-color: #e8f4ff;
+				color: $primaryColor;
+				border-color: $primaryColor;
+				padding-left: 20px;
+				// 前面的圆点
+				&::before {
+				  width: 8px;
+				  height:8px;
+				}
+				// 单个tag的文字
+				.titleText {
+				  // padding-right: 16px;
+				  // padding-left: 16px;
+				}
+				// background-color: $primaryColor !important;
+				// color: white !important; 
+				// border-color: $primaryColor !important; 
+				// // .el-icon-close{
+				// // 	background-color: red;//#b4bccc;
+				// // 	color: white;
+				// // }
+				// .titleText {
+				// 	padding-right: 10px;
+				// 	padding-left: 10px;
+				// }
+			}
+			// 关闭按钮
+			.el-icon-close {
+			  width: 16px;
+			  height: 16px;
+			  vertical-align: 2px;
+			  border-radius: 50%;
+			  text-align: center;
+			  transition: all 0.3s; //cubic-bezier(0.645, 0.045, 0.355, 1)
+			  transform-origin: 100% 50%;
+			  &:before {
+			    transform: scale(0.6);
+			    display: inline-block;
+			    vertical-align: -3px;
+			  }
+			  &:hover {
+			    background-color: #b4bccc;//#b4bccc;
+			    color: white;
+			  }
+			}
+			// 单个tag的图标
+			.titleIcon{
+				display: none;
+			}
+			// 单个tag的文字
+			.titleText {
+			  transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !important;//.active 增加过渡
+			  padding-right: 10px;
+			  padding-left: 10px;
+			}
+		}
+	}
+	
+	/* ********************************************************************************************************
+	panel组件
+	 */
+	
+	.panel.panel-primary {
+	  border-color: $primaryColor;
+		// box-shadow: #337ab7 0px 0px $fanwei;
+	  >.panel-heading {
+		color: #fff;
+		background-color: $primaryColor;
+		border-color: $primaryColor;
+	  }
+	}
+	
+	/* ********************************************************************************************************
+	form组件
+	 */
+	.self_btn .el-input-group__append {
+		background-color: $primaryColor !important;
+		border: 1px solid $primaryColor !important;
+		border-left: 0 !important;
+		color: white !important;
+		 &:hover{
+			 color: white !important;
+		 }
+		 .el-button--default:not(.el-button--primary):active,
+		 .el-button--default:not(.el-button--primary):focus, 
+		 .el-button--default:not(.el-button--primary):hover{
+			 &{
+							 color: white !important;// 抵消换肤带来的副作用
+			 }
+		 }
+	}
+	/* ********************************************************************************************************* 
+	
+	element ui*/
+	@import "@/scss/layout/style/global/element.scss";
+	// .el-tabs__active-bar{
+	// 	background-color: $primaryColor ;
+	// }
+	//  .el-button--primary:not(.is-disabled), 
+	//  .el-checkbox__input.is-checked .el-checkbox__inner, 
+	//  .el-checkbox__input.is-indeterminate .el-checkbox__inner, 
+	//  .el-pagination.is-background .el-pager li:not(.disabled).active, 
+	//  .el-radio__input.is-checked .el-radio__inner, 
+	//  .el-date-table td.current span,
+	//  .available.in-range.start-date span,
+	//  .available.in-range.end-date span,
+	//  .el-switch.is-checked .el-switch__core {
+	//     background: $primaryColor ;
+	//     border-color: $primaryColor ;
+	// }
+	// .el-textarea__inner:focus,
+	// .el-input__inner:focus,
+	// .el-checkbox__input:hover .el-checkbox__inner, 
+	// .el-checkbox__input:visited .el-checkbox__inner, 
+	// .el-checkbox__input.is-focus .el-checkbox__inner,
+	// .el-select .el-input.is-focus .el-input__inner,
+	// .el-select .el-input .el-input__inner:hover,
+	// .el-button--default:not(.el-button--primary):active,
+	// .el-button--default:not(.el-button--primary):focus, 
+	// .el-button--default:not(.el-button--primary):hover,
+	// .el-radio__input:hover .el-radio__inner{
+	// 	border-color: $primaryColor ;
+	// }
+	//  .el-select-dropdown__item.selected,
+	//  .el-select-dropdown.is-multiple .el-select-dropdown__item.selected,
+	//  .el-pagination.is-background .el-pager li:not(.disabled):hover,
+	//  .el-button--default:not(.el-button--primary):active, 
+	//  .el-button--default:not(.el-button--primary):focus, 
+	//  .el-button--default:not(.el-button--primary):hover, 
+	//  .el-button--text, 
+	//  .el-cascader-node.in-active-path, 
+	//  .el-cascader-node.is-active, 
+	//  .el-cascader-node.is-selectable.in-checked-path, 
+	//  .el-checkbox__input.is-checked+.el-checkbox__label, 
+	//  .el-dropdown-menu__item:focus, 
+	//  .el-dropdown-menu__item:not(.is-disabled):hover, 
+	//  .el-loading-spinner .el-loading-text, 
+	//  .el-loading-spinner i, 
+	//  .el-radio-button__orig-radio:not(:checked)+.el-radio-button__inner:hover, 
+	//  .el-radio__input.is-checked+.el-radio__label, 
+	//  .el-tabs__item.is-active, 
+	//  .el-tabs__item:hover, 
+	//  .el-tag:not(.el-tag--danger):not(.el-tag--success):not(.el-tag--info):not(.el-tag--warning), 
+	//  .el-upload--picture-card:hover, 
+	//  .el-date-table td.today span,
+	//  .el-date-table td:hover,
+	//  .el-switch__label.el-switch__label--left.is-active,
+	//  .el-switch__label.el-switch__label--right.is-active,
+	//  .el-upload:focus {
+	//     color: $primaryColor ;
+	// }
+	// .el-loading-spinner .path{
+	// 	stroke:$primaryColor ;
+	// }
+	// // 抵消换肤带来的副作用
+	// .el-pagination.is-background .el-pager li.active:hover{
+	// 	color:white ;
+	// }
+	
+	
+}

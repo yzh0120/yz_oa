@@ -1,0 +1,24 @@
+1-创建一个元素 
+let link = document.createElement("a");
+2 - 操作属性
+link.style.display = "none";
+link.href = objectUrl;
+link.setAttribute("download", decodeURIComponent(response.headers["content-disposition"].split("filename=")[1]));
+
+
+3-插入
+<1>appendChild：
+target.appendChild(newChild)
+
+newChild作为target的子节点插入最后的一子节点之后
+
+<2>insertBefore：
+
+target.insertBefore(newChild,existingChild)
+
+newChild作为target的子节点插入到existingChild节点之前
+
+existingChild为可选项参数，当为null时其效果与appendChild一样
+
+
+https://www.cnblogs.com/mybkn/archive/2013/04/09/3011061.html

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.demo{
+				width: 100px;
+				height: 100px;
+				background-color: #008000;
+			}
+			.demo::before{
+				content: "123";/* 相当于伪元素的内容 */
+				width: 10px;
+				height: 10px;
+				background-color: yellow;/*  */
+			}
+			.demo::after{
+				content: "123";/* 相当于伪元素的内容 */
+				width: 10px;
+				height: 10px;
+				background-color: red;/*  */
+			}
+		</style>
+	</head>
+	<body>
+		<div class="demo">1</div>
+	</body>
+</html>
+<!-- 
+ 
+ -->

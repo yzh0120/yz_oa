@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.stage{
+			    float: left;
+			    margin: 5px;
+			    perspective: 200px;
+			}
+			.container {
+			    transform-style: preserve-3d;
+			}
+			.image {
+			    backface-visibility: hidden;
+			}
+			.front {
+			    position: absolute;
+			    z-index: 1;
+			}
+			.back {
+			    transform: rotateY(180deg);
+			}
+			.stage:nth-child(1) .container{ transform: rotateY(0deg); }
+			.stage:nth-child(2) .container{ transform: rotateY(30deg); }
+			.stage:nth-child(3) .container{ transform: rotateY(60deg); }
+			.stage:nth-child(4) .container{ transform: rotateY(90deg); }
+			.stage:nth-child(5) .container{ transform: rotateY(120deg); }
+			.stage:nth-child(6) .container{ transform: rotateY(150deg); }
+			.stage:nth-child(7) .container{ transform: rotateY(180deg); }
+			
+			img{
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="stage"> 
+		    <div class="container">
+		        <img class="image front" src="../head75.jpg" />1
+		        <img class="image back" src="../red.jpg" />
+		    </div>
+		</div>
+		
+		<div class="stage">
+		    <div class="container">
+		        <img class="image front" src="../head75.jpg" />
+		        <img class="image back" src="../red.jpg" />
+		    </div>
+		</div>
+		
+		<div class="stage">
+		    <div class="container">
+		        <img class="image front" src="../head75.jpg" />
+		        <img class="image back" src="../red.jpg" />
+		    </div>
+		</div>
+		
+		<div class="stage">
+		    <div class="container">
+		        <img class="image front" src="../head75.jpg" />
+		        <img class="image back" src="../red.jpg" />
+		    </div>
+		</div>
+		
+		<div class="stage">
+		    <div class="container">
+		        <img class="image front" src="../head75.jpg" />
+		        <img class="image back" src="../red.jpg" />
+		    </div>
+		</div>
+		
+		<div class="stage">
+		    <div class="container">
+		        <img class="image front" src="../head75.jpg" />
+		        <img class="image back" src="../red.jpg" />
+		    </div>
+		</div>
+		
+		<div class="stage">
+		    <div class="container">
+		        <img class="image front" src="../head75.jpg" />
+		        <img class="image back" src="../red.jpg" />
+		    </div>
+		</div>
+		
+	</body>
+</html>
+<!-- 
+backface-visibility
+ 用于是否可以看见3D舞台背面，默认值visible表示背面可见，可以设成hidden让背面不可见。
+ 通常当旋转时，如果不希望背面显示出来，该属性就很有用，设成hidden即可。
+ -->

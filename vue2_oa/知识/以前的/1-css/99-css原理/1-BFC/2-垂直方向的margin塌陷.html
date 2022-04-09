@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style>
+			.father{
+				margin-top: 100px;
+				width: 200px;
+				height: 200px;
+				background-color:green;
+				
+				/* overflow: hidden; */
+			}
+			.son{
+				margin-top: 250px;
+				width: 100px;
+				height: 100px;
+				background-color:#eee;
+		</style>
+		
+		
+	</head>
+	<body>
+		<div class="father">
+			<div class="son"></div>
+		</div>
+	</body>
+</html>
+
+
+<!-- 
+解决margin塌陷的方法
+	1 给父级设置边框或内边距(不建议使用)
+	2 触发父级bfc(块级格式上下文),改变父级的渲染规则  (子元素触发BFC没有用)
+	
+ 
+ 
+ -->

@@ -1,0 +1,55 @@
+1 es5 
+
+function Child(){
+       //这三句代码最关键
+       this.temp = Person; //创建一个自身缓存函数并将父类构造赋值
+       this.temp('李端','26');
+       delete this.temp;//删除缓存函数
+}
+var child = new Child();
+child.showName();//我是李端
+
+1 bind this方式实现       Person.bind(this)('李端','26'); //绑定this到Person运行环境执行函数
+
+2  call this的方式实现     Person.call(this,'李端','26');
+
+3 apply this方式实现        Person.apply(this,['李端','26']);
+
+
+---------------------------------------------------------------------------
+https://zhuanlan.zhihu.com/p/36340941
+
+
+
+
+
+es6
+	首先利用class构造一个父类
+	class Person {
+	//构造函数实现属性定义
+	 
+	constructor(name,age){
+	 
+	    this.name = name
+	    this.age =age
+	}
+	//原型上的方法
+	say(){
+	    console.log(this.name)
+	}
+	}
+	----------------------------
+	然后利用extends与super实现子类继承
+	class User extends Person {undefined
+	
+	constructor(name,age,tel){
+	    super(name,age);
+	    this.tel = tel;
+	}
+	call(){
+	    console.log(this.tel)
+	}
+	复制代码
+	}
+	
+	const user = new User('lily',18,1234567)

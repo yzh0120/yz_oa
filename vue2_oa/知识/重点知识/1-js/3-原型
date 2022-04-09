@@ -1,0 +1,18 @@
+js万物皆对象,就是基本数据类型比如num,也有它的包装类对象Number
+js在初始化一个对象的时候,都有一个叫做proto的内置属性,用于指向创建它的构造器(工厂函数)的原型对象--prototype
+因此原型链中的链不是指prototype,因为只有函数才有这个属性,而是指proto,因为每个对象都有这个属性
+
+
+
+
+let obj = {}
+ obj.__proto__ == Object.prototype
+ 
+ Object.__proto__ === Function.prototype
+ 
+ Function.prototype.__proto__  == Object.prototype
+ 
+ 
+ Object.prototype.__proto__  ==null
+ 
+ (Function.__proto__ == Function.prototype)

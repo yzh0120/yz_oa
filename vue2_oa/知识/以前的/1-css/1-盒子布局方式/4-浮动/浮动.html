@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.item1{
+				border: 1px solid blue;
+			}
+			.item1::after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+			.demo1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				float: left;
+			};
+		</style>
+	</head>
+	<body>
+		<div class="item1">
+			<div class="demo1"></div>
+		</div>
+		<!-- <div class="item2"></div> -->
+	</body>
+</html>

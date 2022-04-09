@@ -1,0 +1,28 @@
+
+https://www.cnblogs.com/chen-cong/p/7862832.html
+
+二、形成BFC的条件
+
+      1、浮动元素，float 除 none 以外的值； 
+      2、定位元素，position（absolute，fixed）； 
+      3、display 为以下其中之一的值 inline-block，table-cell，table-caption； 
+      4、overflow 除了 visible 以外的值（hidden，auto，scroll）；
+	  
+	  
+可以解决的问题
+
+margin重叠
+所以就让box1或box2再处于另一个BFC中就行了(被bfc元素包裹)
+
+
+能看见浮动元素
+让此元素生成BFC
+
+
+垂直方法的margin塌陷
+子元素与父元素，当给子元素设置 margin-top 时，子元素会与父元素一起向下移动
+使父元素生成BFC来
+
+
+
+

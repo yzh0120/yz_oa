@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.grid{
+				/* gap:10px; */
+				border: 1px solid green;
+				/* 必写 声明grid 并设置宽高 */
+				width: 1000px;
+				height: 600px;
+				display: grid;
+				
+				
+				/*必写 设置单元格大小 :单元格是100 * 100 */
+				grid-template-columns:  100px auto 100px;;
+				grid-template-rows: 100px 100px 100px;
+				
+				
+				/* 设置区域  一个区域至少占一个单元格*/
+				grid-template-areas:'left right_top '
+									'left right_bottom ';	
+									
+			}
+			
+			/* grid-area */
+			.left{
+				background-color: red;
+				grid-area: left;
+				
+			
+			}
+			.right_top{
+				
+				background-color: saddlebrown;
+				grid-area: right_top;
+				
+				/* display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center; */
+			
+			}
+			.right_bottom{
+				background-color: salmon;
+				grid-area: right_bottom;
+				
+				/* grid-column-end: 4 */
+			}
+		</style>
+		<style>
+			/* 
+			 
+			 
+			 */
+		</style>
+	</head>
+	<body>
+		<!-- <div class="container"> -->
+			<div class="grid">
+				<div class="left">left</div>
+				<div class="right_top">right_top</div>
+				<div class="right_bottom">right_bottom</div>
+			</div>
+		<!-- </div> -->
+	</body>
+</html>

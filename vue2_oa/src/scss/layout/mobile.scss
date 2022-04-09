@@ -1,0 +1,35 @@
+.el-container{
+	>.mobile {//作用在侧边栏
+	  // transform: translateX(-100%);
+	  position: absolute;
+	  left: -100%;
+	  transition: left 0.28s;
+	  height: 100%;//calc(100% - 76px); //移动的侧边栏 减去 header 高度
+	  // top: $mobile-top; //header 高度
+	  z-index: 999999;
+	  >.mantle {//蒙层
+		  width: 100vw;
+		  height: 100vh;
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  background: #000;
+		  z-index: -1;
+		  opacity: 0.3;
+		}
+	}
+	>.mobile-show {// 作用在侧边栏菜单展开
+	  // position: absolute;
+	  // height: 100%;
+	  left: 0 !important;
+	  // top: 76px;//header 高度
+	  // &::before{
+	  // 	content: '';
+
+	  // }
+	}
+}
+
+
+
+

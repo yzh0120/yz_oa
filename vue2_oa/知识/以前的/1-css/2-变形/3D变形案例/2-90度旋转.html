@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				perspective: 3000px;
+				perspective-origin: 100% 0%;
+				
+				/* perspective-origin: right bottom ; */
+				/* perspective-origin:center -900%   ; */
+				transform-style: preserve-3d;
+			}
+			._container{
+				width: 600px;
+				height: 150px;
+				margin: 100px auto;
+				transition-duration: 1s;
+				/* 指定3D舞台 */
+				transform-style: preserve-3d;
+			}
+			img{
+				transform-style: preserve-3d;
+				width: 600px;
+				height: 200px;
+				position: absolute;
+				cursor: pointer;
+				object-fit: cover;
+			}
+			img:nth-child(1){transform: rotateX(0deg) translateZ(100.86px); }
+			img:nth-child(2){transform: rotateX(90deg) translateZ(100.86px); }
+			img:nth-child(3){transform: rotateX(180deg) translateZ(100.86px); }
+			img:nth-child(4){transform: rotateX(270deg) translateZ(100.86px); }
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="_container">
+			        <img src="../imgs/1.jpg"/>
+			        <img src="../imgs/2.jpg"/>
+			        <img src="../imgs/3.jpg"/>
+			        <img src="../imgs/4.jpg"/>
+			</div>
+			
+		</div>
+	</body>
+	<script>
+		let x = 0;
+		let _container = document.getElementsByClassName("_container")[0];
+		//滚动函数
+		function roll(){
+			x  = x - 90;      
+			/* 实际上旋转的是 容器 */
+			_container.style.transform = `rotateX(${x}deg)`
+				   console.log(x)
+		}
+		
+		setInterval(roll,2000);
+	</script>
+</html>

@@ -1,0 +1,2 @@
+<img src="https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF" alt="Smiley face" width="42" height="42">
+不管 src 的图片有多大  显示是按照 width 和 height 显示(想当于 图片设置了 width:100% 适应img标签)

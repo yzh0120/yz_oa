@@ -1,0 +1,19 @@
+在 ie中 是window.event
+event = event || window.event;
+
+--------------------------------------------------------------------------------------------------------------
+1:冒泡
+w3c的方法是e.stopPropagation()，
+IE则是使用e.cancelBubble = true
+--------------------------------------------------------------------------------------------------------------
+2:取消默认事件
+w3c的方法是e.preventDefault()，
+IE则是使用e.returnValue = false;
+
+--------------------------------------------------------------------------------------------------------------
+3:绑定事件
+w3c的方法是target.addEventListener(eventType, handler, false);  target.removeEventListener(eventType, handler, false);  
+IE则是使用target.attachEvent("on"+eventType, handler)           target.detachEvent("on"+eventType, handler);  
+
+javascript 兼容W3c和IE的添加（取消）事件监听方法
+https://www.cnblogs.com/edison1412/p/5243821.html

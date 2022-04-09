@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.body{
+				perspective:200px;
+				/* perspective-origin: left; */
+			}
+			.x {
+			    transform: rotateX(60deg);
+			}
+			.y {
+			    transform: rotateY(60deg);
+			}
+			.z {
+			    transform:  rotateZ(60deg);
+			}
+			img{
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<img class="x" src="../head75.jpg" />
+		<img class="y" src="../head75.jpg" />
+		<img class="z" src="../head75.jpg" />
+	</body>
+</html>
+<!-- perspective 默认值是none表示无3D效果，即2D扁平化
+	例如 perspective(200px) rotateX(60deg) 在旋转的时候,能看到图片左右距离屏幕的大小不一样
+	然后 transform: translateZ(16px);能看到图片和父div的距离
+	perspective:3000px；
+	就是我们眼睛距离屏幕3000px时观看到的效果。呈现在显示器中。
+
+
+ 1 perspective只能设px值，不能设%百分比。
+ 
+ 
+ 2 值(视距)越小表示用户眼睛距离屏幕越近，相当于创建一个较大的3D舞台。
+ 反之，值(视距)越大表示用户眼睛距离屏幕越远，相当于创建一个较小的3D舞台。
+ 这很容易理解，离的越近东西看起来越大，离的越远东西看起来越小
+ 
+ 3 变形元素的父元素{
+	 //指定用于3D舞台，即3D舞台的视距，里面的子元素共享这个视距
+	 perspective: 100px;
+ }
+ 
+ 变形元素{建议这一种!!!!!!!!!!!!!
+	 //只针对当前变形元素，需要和transform其他函数一起使用，仅表示当前变形元素的视距。
+	 transform: perspective(200px) rotateX(60deg);
+ }
+ 
+ 
+perspective-origin: x-axis y-axis;眼睛在舞台的位置(角度不一样,看到的东西也不一样) 它需要和perspective属性结合着一起用
+x-axis :
+left 从左边看右边
+center
+right 
+length
+%
+
+y-axis:
+top
+center
+bottom
+length
+%
+
+视角放置在右下角            看左上角
+perspective-origin: bottom right;
+perspective-origin:200% 200%; ( x轴正值向右,Y轴正值向下 ,然后看反方向)
+					Y轴   x轴
+perspective-origin:center -900%   ;
+				
+translateX(100px)会改变 perspective-origin,100px就像是perspective-origin:left
+ -->
+
+

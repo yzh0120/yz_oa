@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.demo{
+				width: 100px;
+				height: 100px;
+				background-color: #008000;
+				margin: 10px;
+			}
+			.demo::before{
+				content: "";/* 相当于伪元素的内容 */
+				width: 10px;
+				height: 10px;
+				background-color: yellow;/*  */
+				position: absolute;
+			}
+			.demo::after{
+				content: "";/* 相当于伪元素的内容 */
+				width: 10px;
+				height: 10px;
+				background-color: red;/*  */
+				position: absolute;
+			}
+			/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
+			.demo1{
+				width: 100px;
+				height: 100px;
+				background-color: #008000;
+				margin: 10px;
+			}
+			.demo1::before{
+				content: "";/* 相当于伪元素的内容 */
+				width: 10px;
+				height: 10px;
+				background-color: yellow;/*  */
+				position: absolute;
+				transition: all 1s;
+			}
+			.demo1:hover::before{
+				width: 100px;
+			}
+			.demo1::after{
+				content: "";/* 相当于伪元素的内容 */
+				width: 10px;
+				height: 10px;
+				background-color: red;/*  */
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="demo"></div>
+		<div class="demo1"></div>
+	</body>
+</html>
+<!-- 
+ ::before 和 ::after 两个属性一模一样,只是名称不一样,就像两个 不同类型的span
+ -->

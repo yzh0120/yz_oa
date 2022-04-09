@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, .item::before{
+            background-image: url('../2-变形/imgs/1.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        body{
+            min-height:100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .item{
+            position: relative;
+            width: auto;
+            height: auto;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px 1px #000;
+            color: #fff;
+            font-size: 20px;
+            font-weight: lighter;
+            line-height: 35px;
+            overflow: hidden;
+        }
+        .item::before{
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: -20px;
+            filter: blur(20px);
+        }
+    </style>
+</head>
+<body>
+    <div class="item">
+        <p>
+            [一见钟情]以及[从一而终]的感情是不切实际的，<br>
+            我们需要的不是这种不切实际而虚幻的感情。<br>
+            有人形容跟异性交往，<br>
+            就好像在海边捡石头，大家都会捡喜欢的那一颗。<br>
+            一但捡到一颗你最喜欢的石头，便把它带回家去，<br>
+            好好对待它，因为那是你唯一的石头。<br>
+            而且要记住，从此后不要再到海边去。<br>
+            永远相信，<br>
+            我已经找到最大、最美、最适合我的那一颗。<br>
+        </p>
+    </div>
+</body>
+</html>
+
+<!-- 
+ 过滤的模糊函数
+ 1 对元素直接使用模糊会将其内容全部模糊掉，为了保证文字不会模糊掉需要多一个层单独应用模糊效果,使用伪元素 z-index : -1
+ -->

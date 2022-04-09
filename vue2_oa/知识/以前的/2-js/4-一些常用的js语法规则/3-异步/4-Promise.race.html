@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//做饭 
+		function startCook(){ 
+			console.log('开始做饭中...')
+			return new Promise(function(resolve, reject){ //做一些异步操作
+			  setTimeout(function(){ 
+				console.log('做饭完毕！')
+				resolve('鸡蛋炒饭'); 
+				// reject('错了')
+			  }, 1000)
+			}); 
+			
+		} 
+
+		//吃饭 
+		function eat(data){
+			console.log('开始吃饭中...：菜是' + data) 
+			return new Promise(function(resolve, reject){ //做一些异步操作 
+			  setTimeout(function(){
+				console.log('吃饭完毕!')
+				resolve('一只碗和一双筷子')
+			  }, 1001) 
+			})
+			
+		} 
+
+		// 洗碗
+		function wash(data){ 
+			console.log('开始洗碗中...：' + data)
+			return new Promise(function(resolve, reject){ //做一些异步操作 
+			  setTimeout(function(){ 
+				console.log('洗碗完毕!')
+				resolve('干净的碗筷')
+			  }, 1002)
+			}); 
+			 
+		}
+		// 处理错误信息
+		function catchFn(err){
+		  console.log('错误信息：' + err)
+		  return err
+		}
+		  
+		  
+		Promise.race([startCook(),eat(),wash()]).then((result) => {
+		  console.log(result)       // [ '3秒后醒来', '2秒后醒来' ]
+		}).catch((error) => {
+		  console.log(error)
+		})
+		/////////////////////////////////////////////////////////////////////////////
+		
+		let wake = (time) => {
+		  return new Promise((resolve, reject) => {
+		    setTimeout(() => {
+		      resolve(`${time / 1000}秒后醒来`)
+		    }, time)
+		  })
+		}
+		
+		let p1 = wake(3000)
+		let p2 = wake(2000)
+		
+		Promise.race([p1, p2]).then((result) => {
+		  console.log(result)       // [ '3秒后醒来', '2秒后醒来' ]
+		}).catch((error) => {
+		  console.log(error)
+		})
+
+	</script>
+	
+	<script>
+		/**
+		1 Promise.all([p1(), p2()])  本身也会返回一个promise对象
+		
+		2 Promse.race就是赛跑的意思，
+		意思就是说，Promise.race([p1, p2, p3])里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态。
+		 
+		*/
+		
+	</script>
+</html>
+
+

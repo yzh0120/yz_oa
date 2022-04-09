@@ -1,0 +1,37 @@
+
+
+
+
+//常见的
+@import "@/scss/common/variable.scss";
+@import "@/scss/common/common.scss";
+@import "@/scss/common/transition.scss";
+@import "@/scss/common/table.scss";//原生table
+@import "@/scss/common/animation.scss";
+
+// 布局
+@import "@/scss/layout/variable.scss";//和布局有关的变量
+@import "@/scss/layout/navigationBar.scss";//布局的侧边栏
+@import "@/scss/layout/tagsView.scss";//布局的标签视图
+@import "@/scss/layout/head-top.scss";//
+@import "@/scss/layout/layout.scss";//布局的容器
+
+
+@import "@/scss/layout/mobile.scss";//布局的容器
+
+@import "@/scss/layout/style/element-nav.scss";//皮肤
+@import "@/scss/layout/style/purple-nav.scss";//皮肤
+@import "@/scss/layout/style/black-nav.scss";//皮肤
+
+
+
+//ui
+@import "@/scss/ui/element.scss";
+
+
+
+@import "./mixin/utils.scss";
+
+//width: calc(100% - #{$list-width});
+
+
