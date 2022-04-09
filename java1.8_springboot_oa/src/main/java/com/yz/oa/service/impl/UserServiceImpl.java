@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.google.code.kaptcha.Producer;
 import com.yz.oa.dto.requestDto.UserLogin;
 import com.yz.oa.dto.responseDto.Captcha;
+import com.yz.oa.dto.responseDto.UserToken;
 import com.yz.oa.entity.User;
 import com.yz.oa.mapper.UserMapper;
 import com.yz.oa.service.UserService;
@@ -13,7 +14,12 @@ import com.yz.oa.utils.JwtUtils;
 import com.yz.oa.utils.RedisUtil;
 import com.yz.oa.utils.exception.BusException;
 import io.jsonwebtoken.Claims;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import sun.misc.BASE64Encoder;
 
@@ -23,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -33,8 +40,15 @@ import java.util.UUID;
  * @author yz
  * @since 2022-04-09
  */
+@Data
 @Service
+//@EnableConfigurationProperties(UserServiceImpl.class)
+//@ConfigurationProperties(prefix = "yz.jwt")
+//@ConfigurationProperties(prefix = "yz.jwt")
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+
+    @Value("${yz.jwt.expire}")
+    private long expire;
 
     @Autowired
     Producer producer;
@@ -86,10 +100,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     *
     * */
     @Override
-    public User checkLogin(UserLogin userLogin, HttpServletResponse resp) {
+    public UserToken checkLogin(UserLogin userLogin, HttpServletResponse resp) {
         //1 判断验证码和验证码token是否正确
         if (StringUtils.isBlank(userLogin.getCaptchaImgBase64Code()) || StringUtils.isBlank(userLogin.getCaptchaToken())) {
-            throw new BusException("验证码错误");
+            throw new BusException("验证码或者token为空");
         }
         if (!userLogin.getCaptchaImgBase64Code().equals(redisUtil.hget("captcha", userLogin.getCaptchaToken()))) {
             throw new BusException("验证码错误");
@@ -99,11 +113,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         User user = userService.getOne(new QueryWrapper<User>().eq("username", userLogin.getUsername()).eq("password", userLogin.getPassword()));
 //        System.out.println(user+"111111111");
         if(user != null){
+
+
+
+
             // 生成jwt，并放置到请求头中
             String jwt = jwtUtils.generateToken(user.getId());
-            resp.setHeader(jwtUtils.getHeader(), jwt);
-
-            return user;
+            //返回 jwt 过期时间
+            Date nowDate = new Date();
+            Date expireDate = new Date(nowDate.getTime() + 1000 * expire);
+            System.out.println(expireDate + "---" + expire);
+            UserToken userToken = new UserToken();
+            userToken.setExpireDateTimeSpan(expireDate.getTime());
+            userToken.setToken(jwt);
+            return userToken;
         }else {
             throw new BusException("用户不存在");
         }

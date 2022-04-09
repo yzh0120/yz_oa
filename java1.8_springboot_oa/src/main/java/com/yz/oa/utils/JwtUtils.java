@@ -1,14 +1,17 @@
 package com.yz.oa.utils;
 
+import com.yz.oa.service.impl.UserServiceImpl;
 import io.jsonwebtoken.*;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 @Data
 @Component
+//@EnableConfigurationProperties(JwtUtils.class)
 @ConfigurationProperties(prefix = "yz.jwt")
 public class JwtUtils {
 

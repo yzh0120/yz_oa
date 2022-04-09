@@ -149,10 +149,16 @@ export default {
       //   );
       let data = Object.assign({ captchaToken: this.captchaToken }, this.form);
       this.$api.user.login(data, { headers: true }).then(
-        (res) => {
+        (resp) => {
           this.loading = false;
-          const jwt = res.headers["authorization"];
-          Cookie.set("token", "Bearer " + jwt, 7955078400000); //登录成功 存token
+          // const jwt = res.headers["authorization"];
+          let res = resp.data;
+
+          Cookie.set(
+            "token",
+            "Bearer " + res.data.token,
+            res.data.expireDateTimeSpan
+          ); //登录成功 存token
           this.$router.push({
             path: "/base",
           });

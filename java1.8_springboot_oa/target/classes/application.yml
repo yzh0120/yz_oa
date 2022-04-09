@@ -17,6 +17,11 @@ spring:
     username: root  #�û���
     password: 123456 #����
 
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  #xml�ļ���Ӧ��ʵ��������ͱ���
+  type-aliases-package: com.yz.oa.entity
+
 yz:
   jwt:
     header: Authorization  #ͷ��

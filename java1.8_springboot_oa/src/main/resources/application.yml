@@ -17,6 +17,11 @@ spring:
     username: root  #用户名
     password: 123456 #密码
 
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  #xml文件对应的实体类的类型别名
+  type-aliases-package: com.yz.oa.entity
+
 yz:
   jwt:
     header: Authorization  #头部
