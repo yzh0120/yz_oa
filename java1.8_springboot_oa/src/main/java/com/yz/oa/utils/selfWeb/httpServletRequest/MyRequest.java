@@ -3,6 +3,8 @@ package com.yz.oa.utils.selfWeb.httpServletRequest;
 
 
 import com.alibaba.fastjson.JSON;
+import net.sf.json.JSONObject;
+//import com.alibaba.fastjson.JSONObject;
 import com.yz.oa.utils.Const;
 
 import javax.servlet.ReadListener;
@@ -30,13 +32,32 @@ public class MyRequest extends HttpServletRequestWrapper{
             this.body = writer.getBuffer().toString().getBytes();
         }
     }
-
-//    public  <T> T getBody(Class T) {
-//        return (T) JSON.parseObject(new String(body)).getObject(Const.body,T);
-//    }
+    
 
     public  <T> T getBody(T t) {
         return (T) JSON.parseObject(new String(body)).getObject(Const.body,t.getClass());
+    }
+
+    public void setBody(String str){
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put(Const.body, str);
+        System.out.println(jsonObject+"jsonObject");
+        this.body = jsonObject.toString().getBytes();
+        /*jsonObjec转换成String后出现反斜杠的问题
+        https://blog.csdn.net/MaleLiu/article/details/107565713
+
+
+        https://www.cnblogs.com/Marydon20170307/p/13878907.html
+        *
+        * */
+
+    }
+
+
+//    在过滤器设置重设 body
+    public  void setBodyOnFilter(byte[] bytes) {
+        this.body = bytes;
     }
 
     @Override

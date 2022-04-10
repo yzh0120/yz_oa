@@ -3,7 +3,8 @@ import router from '@/router/index'; //路由 跳转
 import store from '@/vuex/store'; //vuex
 import { Message, MessageBox} from 'element-ui'; //ui提示
 import * as Cookie from "@/tools/cookjs.js"
-import forDelTemp from "@/tools/fn/forDelTemp.js";
+// import forDelTemp from "@/tools/fn/forDelTemp.js";
+import { encrypt, decrypt } from '@/tools/aes.js';
 
 
 
@@ -207,7 +208,7 @@ function realAxios(method, url, data = {}, other = {}) {
                 method: 'post', //请求方式
                 url: url, //路由
                 baseURL: baseURL, //基础路由
-                data: {p:data}, //参数
+                data: {p:encrypt(JSON.stringify(data))}, //参数
                 headers: headers //请求头部
             }
         } else {
@@ -221,7 +222,8 @@ function realAxios(method, url, data = {}, other = {}) {
         }
         axios(obj).then(
             res => { //原生res 包括了header
-                toggleLoading(load, false,"over")
+                toggleLoading(load, false, "over")
+                res.data.data = JSON.parse(decrypt(res.data.data))
                 if (needSuccessCode &&  successCode != res.data.code) {//判断自定义code是否相同
                     Message({
                         message: res.data.info,
