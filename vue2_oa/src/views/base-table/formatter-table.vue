@@ -41,7 +41,7 @@ export default {
           {
             field: "account",
             title: "格式化银行账号",
-            format({ cellValue }) {
+            format(row, column, cellValue, index) {
               //重点
               return self.$fn.bankAccSplit(cellValue);
             },
@@ -49,7 +49,7 @@ export default {
           {
             field: "Total_amount",
             title: "格式化总金额",
-            format({ cellValue }) {
+            format(row, column, cellValue, index) {
               //重点
               return self.$fn.num.qian(cellValue);
             },

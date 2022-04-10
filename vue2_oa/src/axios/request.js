@@ -207,7 +207,7 @@ function realAxios(method, url, data = {}, other = {}) {
                 method: 'post', //请求方式
                 url: url, //路由
                 baseURL: baseURL, //基础路由
-                data: data, //参数
+                data: {p:data}, //参数
                 headers: headers //请求头部
             }
         } else {
@@ -224,7 +224,7 @@ function realAxios(method, url, data = {}, other = {}) {
                 toggleLoading(load, false,"over")
                 if (needSuccessCode &&  successCode != res.data.code) {//判断自定义code是否相同
                     Message({
-                        message: res.data.msg,
+                        message: res.data.info,
                         type: 'error',
                         duration: 3 * 1000
                     })

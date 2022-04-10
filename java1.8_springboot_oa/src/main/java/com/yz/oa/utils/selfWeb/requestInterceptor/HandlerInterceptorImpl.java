@@ -1,8 +1,9 @@
-package com.yz.oa.utils.selfWeb.Interceptor;
+package com.yz.oa.utils.selfWeb.requestInterceptor;
 
 
 
 import com.yz.oa.utils.JwtUtils;
+import com.yz.oa.utils.exception.BusException;
 import io.jsonwebtoken.Claims;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,7 @@ public class HandlerInterceptorImpl implements HandlerInterceptor {
         if (cls.isAnnotationPresent(UserLoginToken.class) || method.isAnnotationPresent(UserLoginToken.class)){
             String authorization = request.getHeader("Authorization");
             if (!authorization.startsWith("Bearer ")) {
-                throw new RuntimeException("请检查认证信息");
+                throw new BusException("请检查认证信息");
             }
             String token = authorization.replace("Bearer ", "");
 
@@ -57,11 +58,11 @@ public class HandlerInterceptorImpl implements HandlerInterceptor {
             Claims claim = jwtUtils.getClaimByToken(token);
             // claim 为空说明解析失败
             if (claim == null) {
-                throw new RuntimeException("token 异常");
+                throw new BusException("token错误");
             }
             //token过期
             if (jwtUtils.isTokenExpired(claim)) {
-                throw new RuntimeException("token已过期");
+                throw new BusException("token已过期");
             }
 
             return true;

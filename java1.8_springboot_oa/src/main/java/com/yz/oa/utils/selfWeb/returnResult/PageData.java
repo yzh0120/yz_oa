@@ -1,5 +1,10 @@
 package com.yz.oa.utils.selfWeb.returnResult;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yz.oa.entity.Menu;
 import lombok.Data;
 
 import java.util.List;
@@ -30,6 +35,12 @@ public class PageData<T> {
 //        this.records = pageInfo.getList();
 //    }
 
+    public static  <T> PageData<T> defaultPageList(Page<T> page, Wrapper<T> queryWrapper, BaseMapper baseMapper){
+        IPage pageObj = baseMapper.selectPage(page, queryWrapper);
+        PageData pageData = new PageData(pageObj.getRecords(), pageObj.getTotal());
+        System.out.println(pageData+"pageData");
+        return pageData;
 
+    }
 
 }

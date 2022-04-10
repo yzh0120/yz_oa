@@ -1,7 +1,7 @@
 package com.yz.oa.config;
 
 
-import com.yz.oa.utils.selfWeb.Interceptor.HandlerInterceptorImpl;
+import com.yz.oa.utils.selfWeb.requestInterceptor.HandlerInterceptorImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

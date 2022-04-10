@@ -1,4 +1,4 @@
-package com.yz.oa.utils.selfWeb.Interceptor;
+package com.yz.oa.utils.selfWeb.requestInterceptor;
 
 
 import java.lang.annotation.ElementType;

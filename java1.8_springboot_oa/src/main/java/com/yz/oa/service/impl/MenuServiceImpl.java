@@ -62,8 +62,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         QueryWrapper<Menu> queryWrapper = new QueryWrapper<Menu>()
                 .eq(menuPage.getParentId() != null, "parent_id", menuPage.getParentId())
                 .like(menuPage.getRouteTitle() != null, "route_title", menuPage.getRouteTitle());
-        return  this.defaultPageList(page,queryWrapper);
-
+//        return  this.defaultPageList(page,queryWrapper);
+        return PageData.defaultPageList(page,queryWrapper,menuMapper);
     }
 
 
@@ -97,6 +97,15 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         return pageData;
     }
 }
+
+
+
+
+
+
+
+
+
 //        Page<Menu> menuPageObj = menuMapper.selectPage(page,
 //                new QueryWrapper<Menu>()
 //                .eq(menuPage.getParentId() != null,"parent_id",menuPage.getParentId())

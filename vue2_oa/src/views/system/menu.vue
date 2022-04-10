@@ -130,7 +130,8 @@ export default {
           {
             field: "showOnMenu",
             title: "是否显示在菜单",
-            format({ cellValue }) {
+            format(row, column, cellValue, index) {
+              // return cellValue;
               if (cellValue == 1) {
                 return "是";
               }
