@@ -21,20 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="843e7cb9-378e-406d-9eb6-f3ba7b3e97bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/utils/selfWeb/httpServletRequest/MyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/utils/selfWeb/httpServletRequest/MyRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/utils/selfWeb/requestFilter/FilterUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/utils/selfWeb/requestFilter/FilterUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/utils/selfWeb/returnResult/ApiResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/utils/selfWeb/returnResult/ApiResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/yz/oa/OaApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yz/oa/OaApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/yz/oa/utils/selfWeb/httpServletRequest/MyRequest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yz/oa/utils/selfWeb/httpServletRequest/MyRequest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/yz/oa/utils/selfWeb/httpServletRequest/MyRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yz/oa/utils/selfWeb/httpServletRequest/MyRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/yz/oa/utils/selfWeb/requestFilter/FilterUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yz/oa/utils/selfWeb/requestFilter/FilterUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/yz/oa/utils/selfWeb/returnResult/ApiResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yz/oa/utils/selfWeb/returnResult/ApiResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/yz/oa/OaApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/yz/oa/OaApplicationTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue2_oa/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue2_oa/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue2_oa/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue2_oa/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue2_oa/src/axios/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue2_oa/src/axios/request.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +143,7 @@
       <workItem from="1649516927216" duration="90000" />
       <workItem from="1649518996976" duration="73000" />
       <workItem from="1649552495248" duration="10266000" />
-      <workItem from="1649563032051" duration="12969000" />
+      <workItem from="1649563032051" duration="13917000" />
     </task>
     <servers />
   </component>

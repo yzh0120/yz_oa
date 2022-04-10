@@ -32,7 +32,7 @@ public class MyRequest extends HttpServletRequestWrapper{
             this.body = writer.getBuffer().toString().getBytes();
         }
     }
-    
+
 
     public  <T> T getBody(T t) {
         return (T) JSON.parseObject(new String(body)).getObject(Const.body,t.getClass());

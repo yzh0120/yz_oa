@@ -223,7 +223,7 @@ function realAxios(method, url, data = {}, other = {}) {
         axios(obj).then(
             res => { //原生res 包括了header
                 toggleLoading(load, false, "over")
-                res.data.data = JSON.parse(decrypt(res.data.data))
+               
                 if (needSuccessCode &&  successCode != res.data.code) {//判断自定义code是否相同
                     Message({
                         message: res.data.info,
@@ -232,6 +232,7 @@ function realAxios(method, url, data = {}, other = {}) {
                     })
                     reject(res.data)
                 } else {
+                    res.data.data = JSON.parse(decrypt(res.data.data))
                     if (other.headers) {
                         resolve(res)//之所以不返回 res.data.data  是防止在页面中使用了res.data.!data
                     } else {
