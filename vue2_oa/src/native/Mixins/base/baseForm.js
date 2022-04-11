@@ -105,5 +105,10 @@ export default {
 			}
 			
 		},
+		_reset(formInfo) { 
+			for (let key of Object.keys(formInfo)) { 
+				formInfo[key] = null
+			}
+		}
 	}
 }
