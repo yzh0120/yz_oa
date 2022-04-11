@@ -9,6 +9,7 @@ import com.yz.oa.mapper.MenuMapper;
 import com.yz.oa.service.MenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yz.oa.utils.selfWeb.returnResult.PageResult;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,7 +50,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public Object insertMenu(Menu menu) {
         boolean b = menuService.save(menu);
         return b;
@@ -58,10 +58,18 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     @Override
     public PageResult<Menu> getPageListByParentId(MenuPageDto menuPageDto){
         Page<Menu> page = new Page<>(menuPageDto.getPageNo(), menuPageDto.getPageSize());
-        QueryWrapper<Menu> queryWrapper = new QueryWrapper<Menu>()
-                .eq(menuPageDto.getParentId() != null, "parent_id", menuPageDto.getParentId())
-                .like(menuPageDto.getRouteTitle() != null, "route_title", menuPageDto.getRouteTitle());
-//        return  this.defaultPageList(page,queryWrapper);
+        QueryWrapper<Menu> queryWrapper;
+        if(StringUtils.isEmpty(menuPageDto.getParentId())){
+            queryWrapper = new QueryWrapper<Menu>()
+                    .isNull("parent_id")
+                    .like(menuPageDto.getRouteTitle() != null, "route_title", menuPageDto.getRouteTitle());
+        }else{
+             queryWrapper = new QueryWrapper<Menu>()
+                    .eq(menuPageDto.getParentId() != null, "parent_id", menuPageDto.getParentId())
+                    .like(menuPageDto.getRouteTitle() != null, "route_title", menuPageDto.getRouteTitle());
+        }
+
+
         return PageResult.defaultPageList(page,queryWrapper,menuMapper);
     }
 
