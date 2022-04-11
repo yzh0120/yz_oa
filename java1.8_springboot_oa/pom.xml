@@ -49,6 +49,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!--和mysql 有关-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+        </dependency>
         <!--mp代码生成器-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -97,6 +103,7 @@
 <!--            <artifactId>commons-collections4</artifactId>-->
 <!--            <version>4.2</version>-->
 <!--        </dependency>-->
+
 
         <!-- JSONObject对象依赖的jar包 开始 -->
         <dependency>

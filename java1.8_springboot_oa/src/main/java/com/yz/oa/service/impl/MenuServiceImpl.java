@@ -65,6 +65,19 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         return PageResult.defaultPageList(page,queryWrapper,menuMapper);
     }
 
+    @Override
+    public Boolean deleteById(String id) {
+        return menuService.remove(new QueryWrapper<Menu>().eq("id",id));
+    }
+
+    @Override
+    public Boolean updateMenu(Menu menu) {
+        int lineCount = menuMapper.update(menu, new QueryWrapper<Menu>().eq("id", menu.getId()));
+        System.out.println(lineCount+"id");
+        return new Boolean(lineCount != 0);
+
+    }
+
 
     private List<Menu> buildTreeMenu(List<Menu> menus) {
 

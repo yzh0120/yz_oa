@@ -8,6 +8,7 @@ import com.yz.oa.utils.selfWeb.httpServletRequest.MyRequest;
 import com.yz.oa.utils.selfWeb.requestInterceptor.UserLoginToken;
 import com.yz.oa.utils.selfWeb.returnResult.ApiResult;
 import com.yz.oa.utils.selfWeb.returnResult.PageResult;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/menu")
+@Transactional(rollbackFor = Exception.class)
 public class MenuController extends BaseController {
 
     @UserLoginToken
@@ -48,8 +50,17 @@ public class MenuController extends BaseController {
         return  ApiResult.success(menuService.getPageListByParentId(myRequest.getBody(new MenuPageDto())));
     }
 
+    @UserLoginToken
+    @PostMapping("/deleteById")
+    public ApiResult deleteById(@RequestParam("id") String id){
+        return ApiResult.success(menuService.deleteById(id));
+    }
 
-
+    @UserLoginToken
+    @PostMapping("/updateMenu")
+    public ApiResult updateMenu(MyRequest myRequest){
+        return ApiResult.success(menuService.updateMenu(myRequest.getBody(new Menu())));
+    }
 }
 //    @UserLoginToken
 //    @PostMapping("/pageListByParentId")

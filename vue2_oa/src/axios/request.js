@@ -157,7 +157,7 @@ axios.interceptors.response.use(
 export async function get(url, data = {}, other = {}) {
     if (other.tip) { //有tip的请求 必须 有catch（）判断 err 是不是 cancel 
 	//MessageBox.confirm很奇怪 当点击了取消 这个提示直接中断代码 return cancel,所以后面不需要判断是cancel还收confirm'
-        await MessageBox.confirm(other.tip, "提示", {
+        await MessageBox.confirm("请再次确认此操作", "提示", {
             confirmButtonText: "确定",
             cancelButtonText: "取消",
             type: "warning"
@@ -173,7 +173,7 @@ export async function get(url, data = {}, other = {}) {
 export async function post(url, data = {}, other = {}) {
     if (other.tip) { //因为会触发catch，所以有tip的请求 必须判断 err 是不是 cancel ，
 	//MessageBox.confirm很奇怪 当点击了取消 这个提示直接中断代码 return cancel,所以后面不需要判断是cancel还收confirm'
-        await MessageBox.confirm(other.tip, "提示", {
+        await MessageBox.confirm('请再次确认此操作?', "提示", {
             confirmButtonText: "确定",
             cancelButtonText: "取消",
             type: "warning"

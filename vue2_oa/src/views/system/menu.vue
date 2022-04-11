@@ -23,7 +23,12 @@
       </base-form>
 
       <!-- 表格 -->
-      <base-table :data="table" :pager="pagerData"></base-table>
+      <base-table :data="table" :pager="pagerData">
+        <template #do="{ scope }">
+          <el-button type="text" @click="edit(scope.row)">编辑</el-button>
+          <el-button type="text" @click="del(scope.row)">删除</el-button>
+        </template>
+      </base-table>
 
       <!-- 分页 -->
       <pager :data="pagerData" @pageChange="getData" @sizeChange="getData" />
@@ -138,6 +143,11 @@ export default {
               return "否";
             },
           },
+          {
+            //重点
+            slot: "do",
+            title: "操作",
+          },
         ],
         data: [],
         height: self.h,
@@ -171,9 +181,11 @@ export default {
     },
     alertEvent(e) {
       if (e.event == "confirm") {
-        // let url = this.alertFormInfo.data.id ? "update" : "save";
-        this.$api.menu.saveMenu(this.alertFormInfo.data).then((res) => {
+        let url = this.alertFormInfo.data.id ? "updateMenu" : "saveMenu";
+        this.$api.menu[url](this.alertFormInfo.data).then((res) => {
           this.$message.success(res.info);
+          this.getData();
+          this.getMenuTree();
         });
 
         this.alertData.field = false;
@@ -186,6 +198,7 @@ export default {
     // 懒加载点击node上的文字会触发  左边的箭头不会触发此方法
     handleNodeClick_dongTai(data, node) {
       this.activeRouteId = data.id;
+      this.getData();
     },
     search() {
       this.pagerData.pageNo = 1;
@@ -203,6 +216,17 @@ export default {
         this.table.data = res.data.records;
         this.pagerData.total = res.data.total;
       });
+    },
+    del(row) {
+      this.$api.menu.deleteById({ id: row.id }, { tip: true }).then((res) => {
+        this.$message.success(res.info);
+        this.getData();
+        this.getMenuTree();
+      });
+    },
+    edit(row) {
+      this.addRoute();
+      this.alertFormInfo.data = row;
     },
   },
 };

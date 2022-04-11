@@ -23,4 +23,8 @@ public interface MenuService extends IService<Menu> {
     Object insertMenu(Menu menu);
 
     PageResult<Menu> getPageListByParentId(MenuPageDto menuPageDto);
+
+    Boolean deleteById(String id);
+
+    Boolean updateMenu(Menu body);
 }
