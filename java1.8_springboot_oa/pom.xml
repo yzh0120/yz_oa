@@ -85,11 +85,18 @@
             <version>0.0.9</version>
         </dependency>
         <!-- hutool工具类-->
+        <!-- MapUtil-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.3.3</version>
         </dependency>
+        <!--MapUtils-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.commons</groupId>-->
+<!--            <artifactId>commons-collections4</artifactId>-->
+<!--            <version>4.2</version>-->
+<!--        </dependency>-->
 
         <!-- JSONObject对象依赖的jar包 开始 -->
         <dependency>

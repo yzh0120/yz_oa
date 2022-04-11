@@ -3,7 +3,7 @@ package com.yz.oa.dto.requestDto.PageList;
 import lombok.Data;
 
 @Data
-public class MenuPage  extends PageDto {
+public class MenuPageDto extends PageDto {
 
     private String parentId;
 

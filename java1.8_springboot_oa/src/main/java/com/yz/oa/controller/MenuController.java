@@ -2,13 +2,12 @@ package com.yz.oa.controller;
 
 
 
-import com.yz.oa.dto.requestDto.PageList.MenuPage;
+import com.yz.oa.dto.requestDto.PageList.MenuPageDto;
 import com.yz.oa.entity.Menu;
-import com.yz.oa.utils.Const;
 import com.yz.oa.utils.selfWeb.httpServletRequest.MyRequest;
 import com.yz.oa.utils.selfWeb.requestInterceptor.UserLoginToken;
 import com.yz.oa.utils.selfWeb.returnResult.ApiResult;
-import com.yz.oa.utils.selfWeb.returnResult.PageData;
+import com.yz.oa.utils.selfWeb.returnResult.PageResult;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -45,8 +44,8 @@ public class MenuController extends BaseController {
 
     @UserLoginToken
     @PostMapping("/pageListByParentId")
-    public ApiResult<PageData<Menu>> pageListByParentId(MyRequest myRequest){
-        return  ApiResult.success(menuService.getPageListByParentId(myRequest.getBody(new MenuPage())));
+    public ApiResult<PageResult<Menu>> pageListByParentId(MyRequest myRequest){
+        return  ApiResult.success(menuService.getPageListByParentId(myRequest.getBody(new MenuPageDto())));
     }
 
 

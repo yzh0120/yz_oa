@@ -1,15 +1,14 @@
 package com.yz.oa.service.impl;
 
-import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yz.oa.dto.requestDto.PageList.MenuPage;
+import com.yz.oa.dto.requestDto.PageList.MenuPageDto;
 import com.yz.oa.entity.Menu;
 import com.yz.oa.mapper.MenuMapper;
 import com.yz.oa.service.MenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yz.oa.utils.selfWeb.returnResult.PageData;
+import com.yz.oa.utils.selfWeb.returnResult.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,13 +56,13 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     }
 
     @Override
-    public PageData<Menu>getPageListByParentId(MenuPage menuPage){
-        Page<Menu> page = new Page<>(menuPage.getPageNo(),menuPage.getPageSize());
+    public PageResult<Menu> getPageListByParentId(MenuPageDto menuPageDto){
+        Page<Menu> page = new Page<>(menuPageDto.getPageNo(), menuPageDto.getPageSize());
         QueryWrapper<Menu> queryWrapper = new QueryWrapper<Menu>()
-                .eq(menuPage.getParentId() != null, "parent_id", menuPage.getParentId())
-                .like(menuPage.getRouteTitle() != null, "route_title", menuPage.getRouteTitle());
+                .eq(menuPageDto.getParentId() != null, "parent_id", menuPageDto.getParentId())
+                .like(menuPageDto.getRouteTitle() != null, "route_title", menuPageDto.getRouteTitle());
 //        return  this.defaultPageList(page,queryWrapper);
-        return PageData.defaultPageList(page,queryWrapper,menuMapper);
+        return PageResult.defaultPageList(page,queryWrapper,menuMapper);
     }
 
 
@@ -90,11 +89,11 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         return finalMenus;
     }
 
-    public PageData<Menu> defaultPageList( Page<Menu> page,Wrapper<Menu> queryWrapper){
+    public PageResult<Menu> defaultPageList(Page<Menu> page, Wrapper<Menu> queryWrapper){
         Page<Menu> menuPageObj = menuMapper.selectPage(page, queryWrapper);
-        PageData pageData = new PageData(menuPageObj.getRecords(), menuPageObj.getTotal());
-        System.out.println(pageData+"pageData");
-        return pageData;
+        PageResult pageResult = new PageResult(menuPageObj.getRecords(), menuPageObj.getTotal());
+        System.out.println(pageResult +"pageData");
+        return pageResult;
     }
 }
 

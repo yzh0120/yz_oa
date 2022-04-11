@@ -1,10 +1,10 @@
 package com.yz.oa.service;
 
 
-import com.yz.oa.dto.requestDto.PageList.MenuPage;
+import com.yz.oa.dto.requestDto.PageList.MenuPageDto;
 import com.yz.oa.entity.Menu;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yz.oa.utils.selfWeb.returnResult.PageData;
+import com.yz.oa.utils.selfWeb.returnResult.PageResult;
 
 import java.util.List;
 
@@ -22,5 +22,5 @@ public interface MenuService extends IService<Menu> {
 
     Object insertMenu(Menu menu);
 
-    PageData<Menu> getPageListByParentId(MenuPage menuPage);
+    PageResult<Menu> getPageListByParentId(MenuPageDto menuPageDto);
 }

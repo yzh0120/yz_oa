@@ -4,23 +4,22 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yz.oa.entity.Menu;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class PageData<T> {
+public class PageResult<T> {
 
     private long total;
 
     private List<T> records;
 
-    public PageData() {
+    public PageResult() {
 
     }
 
-    public PageData( List<T> records,long total) {
+    public PageResult(List<T> records, long total) {
         this.total = total;
 
         this.records = records;
@@ -35,11 +34,11 @@ public class PageData<T> {
 //        this.records = pageInfo.getList();
 //    }
 
-    public static  <T> PageData<T> defaultPageList(Page<T> page, Wrapper<T> queryWrapper, BaseMapper baseMapper){
+    public static  <T> PageResult<T> defaultPageList(Page<T> page, Wrapper<T> queryWrapper, BaseMapper baseMapper){
         IPage pageObj = baseMapper.selectPage(page, queryWrapper);
-        PageData pageData = new PageData(pageObj.getRecords(), pageObj.getTotal());
-        System.out.println(pageData+"pageData");
-        return pageData;
+        PageResult pageResult = new PageResult(pageObj.getRecords(), pageObj.getTotal());
+        System.out.println(pageResult +"pageData");
+        return pageResult;
 
     }
 
