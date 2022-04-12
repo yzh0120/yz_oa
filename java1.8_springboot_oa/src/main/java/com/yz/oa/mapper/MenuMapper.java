@@ -16,5 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MenuMapper extends BaseMapper<Menu> {
 
-    Page<Menu> selectPageVO(Page<Menu> page, String routeTitle);
+//    Page<Menu> selectPageVO(Page<Menu> page, String routeTitle);
 }

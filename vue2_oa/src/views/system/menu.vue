@@ -35,7 +35,35 @@
 
       <!-- 弹窗 -->
       <alert :data="alertData" @event="alertEvent">
-        <base-form :data="alertFormInfo"></base-form>
+        <!--  -->
+        <el-tabs type="border-card" v-model="menuactive">
+          <el-tab-pane label="基础路由信息" name="one">
+            <base-form :data="alertFormInfo"></base-form>
+          </el-tab-pane>
+          <el-tab-pane label="路由按钮权限配置" name="two">
+            <div style="text-align: right; margin-bottom: 15px">
+              <el-button type="primary" @click="addBtn">增加</el-button>
+            </div>
+
+            <alert :data="alertDataBtn" @event="alertEventBtn">
+              <base-form
+                :data="alertFormInfoBtn"
+                ref="alertFormInfoBtn"
+              ></base-form>
+            </alert>
+            <!--  -->
+            <base-table :data="tableBtn" :pager="pagerData">
+              <template #do="{ scope }">
+                <el-button type="text" @click="editBtn(scope.row, scope.$index)"
+                  >编辑</el-button
+                >
+                <el-button type="text" @click="delBtn(scope.$index)"
+                  >删除</el-button
+                >
+              </template>
+            </base-table>
+          </el-tab-pane>
+        </el-tabs>
       </alert>
     </template>
   </nav-table-page>
@@ -48,6 +76,7 @@ export default {
   data() {
     let self = this;
     return {
+      menuactive: "one",
       activeRouteId: null,
       treeData: [],
       defaultProps: {
@@ -62,6 +91,29 @@ export default {
         data: {},
 
         inline: true,
+      },
+      alertFormInfoBtn: {
+        data: {},
+        list: [
+          {
+            title: "名称",
+            field: "name",
+            type: "input",
+            rules: [{ required: true, message: "必填", trigger: "blur" }],
+          },
+          {
+            title: "编码",
+            field: "enCode",
+            type: "input",
+            rules: [{ required: true, message: "必填", trigger: "blur" }],
+          },
+          {
+            title: "备注",
+            field: "remark",
+            type: "input",
+            rules: [{ required: false, message: "必填", trigger: "blur" }],
+          },
+        ],
       },
       alertFormInfo: {
         data: {},
@@ -111,6 +163,25 @@ export default {
           },
         ],
         titleWidth: "160px",
+      },
+      tableBtn: {
+        autoWidth: true,
+        head: [
+          {
+            field: "name",
+            title: "名称",
+          },
+          {
+            field: "enCode",
+            title: "编码",
+          },
+          {
+            //重点
+            slot: "do",
+            title: "操作",
+          },
+        ],
+        data: [],
       },
       table: {
         autoWidth: true,
@@ -166,6 +237,12 @@ export default {
         height: "600px",
         title: "路由",
       },
+      alertDataBtn: {
+        field: false,
+        width: "600px",
+        height: "400px",
+        title: "按钮权限",
+      },
     };
   },
   mounted() {
@@ -173,6 +250,17 @@ export default {
     this.getMenuTree();
   },
   methods: {
+    addBtn() {
+      this.alertDataBtn.field = true;
+    },
+    editBtn(row, index) {
+      this.alertFormInfoBtn.data = row;
+      this.alertFormInfoBtn.data.index = index;
+      this.addBtn();
+    },
+    delBtn(index) {
+      this.tableBtn.data.splice(index, 1);
+    },
     getMenuTree() {
       this.$api.menu.menuTree().then((res) => {
         this.treeData = res.data;
@@ -182,17 +270,42 @@ export default {
     alertEvent(e) {
       if (e.event == "confirm") {
         let url = this.alertFormInfo.data.id ? "updateMenu" : "saveMenu";
-        this.$api.menu[url](this.alertFormInfo.data).then((res) => {
+        this.$api.menu[url]({
+          menu: this.alertFormInfo.data,
+          scopeBtnList: this.tableBtn.data,
+        }).then((res) => {
           this.$message.success(res.info);
           this.getData();
           this.getMenuTree();
         });
 
-        this.alertData.field = false;
-        this.alertFormInfo.data = {};
+        this.alertEvent({ event: "cancel" });
       }
       if (e.event == "cancel") {
         this.alertData.field = false;
+        this.alertFormInfo.data = {};
+      }
+    },
+    alertEventBtn(e) {
+      if (e.event == "confirm") {
+        if (this.$refs.alertFormInfoBtn.check()) {
+          if (this.$fn.type(this.alertFormInfoBtn.data.index) == "und") {
+            this.alertFormInfoBtn.data.index = this.tableBtn.data.length;
+            this.tableBtn.data.push(
+              this.$fn.deepClone(this.alertFormInfoBtn.data)
+            );
+          } else {
+            this.alertFormInfoBtn.data[this.alertFormInfo.data.index] =
+              this.$fn.deepClone(this.alertFormInfoBtn.data);
+          }
+
+          this.alertEventBtn({ event: "cancel" });
+        } else {
+        }
+      }
+      if (e.event == "cancel") {
+        this.alertDataBtn.field = false;
+        this.alertFormInfoBtn.data = {};
       }
     },
     // 懒加载点击node上的文字会触发  左边的箭头不会触发此方法
@@ -206,6 +319,7 @@ export default {
     },
     addRoute() {
       this.alertData.field = true;
+      this.menuactive = "one";
     },
 
     getData() {
@@ -226,7 +340,11 @@ export default {
     },
     edit(row) {
       this.addRoute();
-      this.alertFormInfo.data = row;
+      this.$api.menu.getMenuDetailById({ id: row.id }).then((res) => {
+        console.log(res.data);
+        this.alertFormInfo.data = res.data.menu;
+        this.tableBtn.data = res.data.scopeBtnList;
+      });
     },
   },
 };

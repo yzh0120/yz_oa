@@ -2,6 +2,7 @@ package com.yz.oa.controller;
 
 //import com.yz.oa.service.UserService;
 import com.yz.oa.service.MenuService;
+import com.yz.oa.service.ScopeBtnService;
 import com.yz.oa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,7 +18,8 @@ public class BaseController {
     @Autowired
     MenuService menuService;
 
-
+    @Autowired
+    ScopeBtnService scopeBtnService;
 
 
 }

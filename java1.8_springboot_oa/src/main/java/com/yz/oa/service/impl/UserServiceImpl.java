@@ -21,6 +21,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
@@ -45,6 +46,7 @@ import java.util.UUID;
 //@EnableConfigurationProperties(UserServiceImpl.class)
 //@ConfigurationProperties(prefix = "yz.jwt")
 //@ConfigurationProperties(prefix = "yz.jwt")
+@Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Value("${yz.jwt.expire}")

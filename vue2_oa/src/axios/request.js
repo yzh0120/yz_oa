@@ -190,7 +190,8 @@ export async function post(url, data = {}, other = {}) {
 function realAxios(method, url, data = {}, other = {}) {
     let {
         load={text:"加载中..."},//加载对象 , 每次都会使用这个对象 所以必须有默认值,默认的text 是 "正在加载中"
-        code = {}
+        code = {},
+        params = {}
     } = other
 	let {successCode = 200, needSuccessCode = true } = code
     // 加载操作
@@ -208,7 +209,8 @@ function realAxios(method, url, data = {}, other = {}) {
                 method: 'post', //请求方式
                 url: url, //路由
                 baseURL: baseURL, //基础路由
-                data: {p:encrypt(JSON.stringify(data))}, //参数
+                data: { p: encrypt(JSON.stringify(data)) }, //参数
+                params: data, //参数
                 headers: headers //请求头部
             }
         } else {

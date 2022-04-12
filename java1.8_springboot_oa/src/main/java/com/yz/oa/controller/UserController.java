@@ -2,9 +2,11 @@ package com.yz.oa.controller;
 
 import com.yz.oa.dto.requestDto.UserLogin;
 import com.yz.oa.entity.Menu;
+import com.yz.oa.service.UserService;
 import com.yz.oa.utils.selfWeb.httpServletRequest.MyRequest;
 import com.yz.oa.utils.selfWeb.requestInterceptor.UserLoginToken;
 import com.yz.oa.utils.selfWeb.returnResult.ApiResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +25,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @RequestMapping("/user")
-@Transactional(rollbackFor = Exception.class)
-public class UserController extends BaseController {
+//@Transactional(rollbackFor = Exception.class)
+public class UserController  {
+    @Autowired
+    UserService userService;
 
     /*
     * 用户获取验证码

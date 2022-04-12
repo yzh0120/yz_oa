@@ -19,7 +19,8 @@ import lombok.EqualsAndHashCode;
 @Data
 public class User  implements Serializable {
 
-    //private static final long id = 1L;//serialVersionUID
+    private static final long serialVersionUID = 1L;
+
     @TableId(value = "id")
     private String id;
 

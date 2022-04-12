@@ -3,12 +3,17 @@ package com.yz.oa.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yz.oa.dto.requestDto.AddMenuDto;
 import com.yz.oa.dto.requestDto.PageList.MenuPageDto;
+import com.yz.oa.dto.responseDto.MenuDetail;
 import com.yz.oa.entity.Menu;
+import com.yz.oa.entity.ScopeBtn;
 import com.yz.oa.mapper.MenuMapper;
 import com.yz.oa.service.MenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.yz.oa.service.ScopeBtnService;
 import com.yz.oa.utils.selfWeb.returnResult.PageResult;
+import io.netty.util.internal.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,12 +32,16 @@ import java.util.List;
  * @since 2022-04-09
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements MenuService {
     @Autowired
     MenuService menuService;
 
     @Autowired
     MenuMapper menuMapper;
+
+    @Autowired
+    ScopeBtnService scopeBtnService;
 
     @Override
     public List<Menu> gertMenuTree() {
@@ -50,9 +59,47 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     }
 
     @Override
-    public Object insertMenu(Menu menu) {
-        boolean b = menuService.save(menu);
-        return b;
+    public Object insertMenu(AddMenuDto addMenuDto) {
+        boolean b = menuService.save(addMenuDto.getMenu());
+        this.removeHistoryBtn(addMenuDto.getMenu().getId());
+        List<ScopeBtn> scopeBtnList = addMenuDto.getScopeBtnList();
+        if(scopeBtnList.size() != 0){
+            for(ScopeBtn scopeBtn : scopeBtnList ){
+                if(StringUtils.isNotBlank(scopeBtn.getEnCode())){
+                    scopeBtn.setMenuId(addMenuDto.getMenu().getId());
+                    scopeBtnService.save(scopeBtn);
+                }
+            }
+        }
+        return b  ;
+    }
+
+    @Override
+    public Boolean updateMenu(AddMenuDto addMenuDto) {
+        int lineCount = menuMapper.update(addMenuDto.getMenu(), new QueryWrapper<Menu>().eq("id", addMenuDto.getMenu().getId()));
+        this.removeHistoryBtn(addMenuDto.getMenu().getId());
+        List<ScopeBtn> scopeBtnList = addMenuDto.getScopeBtnList();
+        if(scopeBtnList.size() != 0){
+            for(ScopeBtn scopeBtn : scopeBtnList ){
+                if(StringUtils.isNotBlank(scopeBtn.getEnCode())){
+                    scopeBtn.setMenuId(addMenuDto.getMenu().getId());
+                    scopeBtnService.save(scopeBtn);
+                }
+            }
+        }
+        return new Boolean(lineCount != 0);
+
+    }
+
+    @Override
+    public MenuDetail getMenuDetailById(String id) {
+        Menu menu = menuService.getById(id);
+        System.out.println(menu+"---"+id+"---");
+        List<ScopeBtn> scopeBtnList = scopeBtnService.list(new QueryWrapper<ScopeBtn>().eq("menu_id", menu.getId()));
+        MenuDetail menuDetail = new MenuDetail();
+        menuDetail.setMenu(menu);
+        menuDetail.setScopeBtnList(scopeBtnList);
+        return menuDetail;
     }
 
     @Override
@@ -78,12 +125,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         return menuService.remove(new QueryWrapper<Menu>().eq("id",id));
     }
 
-    @Override
-    public Boolean updateMenu(Menu menu) {
-        int lineCount = menuMapper.update(menu, new QueryWrapper<Menu>().eq("id", menu.getId()));
-        System.out.println(lineCount+"id");
-        return new Boolean(lineCount != 0);
-
+    public void removeHistoryBtn(String menuId){
+        scopeBtnService.remove(new QueryWrapper<ScopeBtn>().eq("menu_id",menuId));
     }
 
 
@@ -113,7 +156,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     public PageResult<Menu> defaultPageList(Page<Menu> page, Wrapper<Menu> queryWrapper){
         Page<Menu> menuPageObj = menuMapper.selectPage(page, queryWrapper);
         PageResult pageResult = new PageResult(menuPageObj.getRecords(), menuPageObj.getTotal());
-        System.out.println(pageResult +"pageData");
         return pageResult;
     }
 }

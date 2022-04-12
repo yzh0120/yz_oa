@@ -22,3 +22,7 @@ export function pageListByParentId(data, other) {
 export function deleteById(data, other) {
     return post(`/menu/deleteById?id=${data.id}`, data, other)
 }
+
+export function getMenuDetailById(data, other) {
+    return get(`/menu/getMenuDetailById`, data, other)
+}
