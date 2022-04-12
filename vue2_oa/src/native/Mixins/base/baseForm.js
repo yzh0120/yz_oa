@@ -77,7 +77,7 @@ export default {
 		
 		/* 只在组件外部使用 */
 		// 设置list的某个options（属性）       只在组件外部使用
-		_set(formInfo,fieldValue,valueObj,keyValue){
+		_set(formInfo,fieldValue,valueObj){
 			if(this.$fn.type(valueObj) == "obj"){//this._set(this.addApplyForm, "degreeType", { opt: data,xxx:xxx });
 				formInfo.list.forEach((item)=>{
 					if(item.field == fieldValue){
@@ -91,7 +91,7 @@ export default {
 			}
 			
 		},
-		_setList(formInfo,fieldValue,valueObj,keyValue){
+		_setList(formInfo,fieldValue,valueObj){
 			if(this.$fn.type(valueObj) == "obj"){//this._set(this.addApplyForm, "degreeType", { opt: data,xxx:xxx });
 				formInfo.list.forEach((item)=>{
 					if(item.field == fieldValue){

@@ -38,7 +38,7 @@
         <!--  -->
         <el-tabs type="border-card" v-model="menuactive">
           <el-tab-pane label="基础路由信息" name="one">
-            <base-form :data="alertFormInfo"></base-form>
+            <base-form :data="formInfoAlert"></base-form>
           </el-tab-pane>
           <el-tab-pane label="路由按钮权限配置" name="two">
             <div style="text-align: right; margin-bottom: 15px">
@@ -47,8 +47,8 @@
 
             <alert :data="alertDataBtn" @event="alertEventBtn">
               <base-form
-                :data="alertFormInfoBtn"
-                ref="alertFormInfoBtn"
+                :data="formInfoAlertBtn"
+                ref="formInfoAlertBtn"
               ></base-form>
             </alert>
             <!--  -->
@@ -92,7 +92,7 @@ export default {
 
         inline: true,
       },
-      alertFormInfoBtn: {
+      formInfoAlertBtn: {
         data: {},
         list: [
           {
@@ -115,7 +115,7 @@ export default {
           },
         ],
       },
-      alertFormInfo: {
+      formInfoAlert: {
         data: {},
         list: [
           {
@@ -254,8 +254,8 @@ export default {
       this.alertDataBtn.field = true;
     },
     editBtn(row, index) {
-      this.alertFormInfoBtn.data = row;
-      this.alertFormInfoBtn.data.index = index;
+      this.formInfoAlertBtn.data = row;
+      this.formInfoAlertBtn.data.index = index;
       this.addBtn();
     },
     delBtn(index) {
@@ -264,14 +264,14 @@ export default {
     getMenuTree() {
       this.$api.menu.menuTree().then((res) => {
         this.treeData = res.data;
-        this._setList(this.alertFormInfo, "parentId", { opt: res.data });
+        this._setList(this.formInfoAlert, "parentId", { opt: res.data });
       });
     },
     alertEvent(e) {
       if (e.event == "confirm") {
-        let url = this.alertFormInfo.data.id ? "updateMenu" : "saveMenu";
+        let url = this.formInfoAlert.data.id ? "updateMenu" : "saveMenu";
         this.$api.menu[url]({
-          menu: this.alertFormInfo.data,
+          menu: this.formInfoAlert.data,
           scopeBtnList: this.tableBtn.data,
         }).then((res) => {
           this.$message.success(res.info);
@@ -283,20 +283,20 @@ export default {
       }
       if (e.event == "cancel") {
         this.alertData.field = false;
-        this.alertFormInfo.data = {};
+        this.formInfoAlert.data = {};
       }
     },
     alertEventBtn(e) {
       if (e.event == "confirm") {
-        if (this.$refs.alertFormInfoBtn.check()) {
-          if (this.$fn.type(this.alertFormInfoBtn.data.index) == "und") {
-            this.alertFormInfoBtn.data.index = this.tableBtn.data.length;
+        if (this.$refs.formInfoAlertBtn.check()) {
+          if (this.$fn.type(this.formInfoAlertBtn.data.index) == "und") {
+            this.formInfoAlertBtn.data.index = this.tableBtn.data.length;
             this.tableBtn.data.push(
-              this.$fn.deepClone(this.alertFormInfoBtn.data)
+              this.$fn.deepClone(this.formInfoAlertBtn.data)
             );
           } else {
-            this.alertFormInfoBtn.data[this.alertFormInfo.data.index] =
-              this.$fn.deepClone(this.alertFormInfoBtn.data);
+            this.formInfoAlertBtn.data[this.formInfoAlert.data.index] =
+              this.$fn.deepClone(this.formInfoAlertBtn.data);
           }
 
           this.alertEventBtn({ event: "cancel" });
@@ -305,7 +305,7 @@ export default {
       }
       if (e.event == "cancel") {
         this.alertDataBtn.field = false;
-        this.alertFormInfoBtn.data = {};
+        this.formInfoAlertBtn.data = {};
       }
     },
     // 懒加载点击node上的文字会触发  左边的箭头不会触发此方法
@@ -342,7 +342,7 @@ export default {
       this.addRoute();
       this.$api.menu.getMenuDetailById({ id: row.id }).then((res) => {
         console.log(res.data);
-        this.alertFormInfo.data = res.data.menu;
+        this.formInfoAlert.data = res.data.menu;
         this.tableBtn.data = res.data.scopeBtnList;
       });
     },

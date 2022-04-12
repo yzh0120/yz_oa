@@ -19,6 +19,7 @@ export default {
             id: "id1",
             text: "label1",
             children: "subOptions",
+            // labelWidth: "0px",
             rules: [{ required: true, message: "请输入", trigger: "blur" }],
           },
           {

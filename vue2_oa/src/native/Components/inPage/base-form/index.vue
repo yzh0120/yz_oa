@@ -51,6 +51,7 @@
               :prop="item.field"
               :label="item.title"
               :rules="item.rules"
+              :label-width="item.labelWidth"
             >
               <!-- 是否悬浮提示 -->
               <el-tooltip
@@ -119,6 +120,7 @@
               :prop="item.field"
               :label="item.title"
               :rules="item.rules"
+              :label-width="item.labelWidth"
             >
               <!-- 是否悬浮提示 -->
               <el-tooltip
@@ -182,6 +184,7 @@
           :prop="item.field"
           :label="item.title"
           :rules="item.rules"
+          :label-width="item.labelWidth"
         >
           <el-tooltip
             class="item"

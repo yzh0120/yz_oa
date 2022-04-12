@@ -210,7 +210,7 @@ function realAxios(method, url, data = {}, other = {}) {
                 url: url, //路由
                 baseURL: baseURL, //基础路由
                 data: { p: encrypt(JSON.stringify(data)) }, //参数
-                params: data, //参数
+                params: params, //参数
                 headers: headers //请求头部
             }
         } else {
