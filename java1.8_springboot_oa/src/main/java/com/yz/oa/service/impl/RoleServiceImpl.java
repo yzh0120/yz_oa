@@ -31,12 +31,14 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
 
     @Override
     public PageResult<Role> pageList(RolePageDto rolePageDto) {
-//        roleService.page()
+
         Page page = new Page(rolePageDto.getPageNo(), rolePageDto.getPageSize());
         QueryWrapper<Role> queryWrapper = new QueryWrapper<Role>().like(StringUtils.isNotBlank(rolePageDto.getRoleName()), "role_name", rolePageDto.getRoleName());
-//        PageResult.defaultPageList(page,queryWrapper,)
-        Page pageObj = roleService.page(page, queryWrapper);
-        PageResult pageResult = new PageResult(pageObj.getRecords(), pageObj.getTotal());
-        return pageResult;
+
+//        Page pageObj = roleService.page(page, queryWrapper);
+//        PageResult pageResult = new PageResult(pageObj.getRecords(), pageObj.getTotal());
+//        return pageResult;
+
+        return PageResult.defaultPageList(page,queryWrapper,roleService);
     }
 }

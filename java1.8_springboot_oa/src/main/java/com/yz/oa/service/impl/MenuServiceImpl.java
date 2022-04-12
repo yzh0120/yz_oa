@@ -117,7 +117,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         }
 
 
-        return PageResult.defaultPageList(page,queryWrapper,menuMapper);
+        return PageResult.defaultPageList(page,queryWrapper,menuService);
     }
 
     @Override
