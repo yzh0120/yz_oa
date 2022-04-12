@@ -13,14 +13,23 @@
     </base-form>
 
     <!-- 表格 -->
-    <base-table :data="table" :pager="pagerData"></base-table>
+    <base-table :data="table" :pager="pagerData">
+      <template #do="{ scope }">
+        <el-button type="text" @click="edit(scope.row, scope.$index)"
+          >编辑</el-button
+        >
+        <el-button type="text" @click="del(scope.row, scope.$index)"
+          >删除</el-button
+        >
+      </template>
+    </base-table>
 
     <!-- 分页 -->
     <pager :data="pagerData" @pageChange="getData" @sizeChange="getData" />
 
     <!-- 弹窗 -->
     <alert :data="alertData" @event="alertEvent">
-      <base-form :data="alertFormInfo"></base-form>
+      <base-form :data="formAlert"></base-form>
     </alert>
   </page>
 </template>
@@ -37,7 +46,7 @@ export default {
         height: "600px",
         title: "基础弹窗",
       },
-      alertFormInfo: {
+      formAlert: {
         span: true,
         list: [
           { title: "日期", field: "__date", type: "date", span: 12 },
@@ -76,6 +85,7 @@ export default {
             field: "remark",
             title: "备注",
           },
+          { slot: "do", title: "操作", width: 150, fixed: "right" },
         ],
         data: [],
         height: self.h,
@@ -93,6 +103,18 @@ export default {
     this.getData();
   },
   methods: {
+    edit(row) {
+      this.formAlert.data = this.$fn.deepClone(row);
+      this.alertData.field = true;
+    },
+    del(row, index) {
+      this.$api.role
+        .del({}, { tip: true, params: { id: row.id } })
+        .then((res) => {
+          this.$message.success(res.info);
+          this.getData();
+        });
+    },
     search() {
       this.pagerData.pageNo = 1;
       this.getData();
@@ -108,11 +130,11 @@ export default {
       this.$api.table
         .pager({ pagerData: this.pagerData }, other)
         .then((res) => {
-          this.table.data = res.data;
-          this.pagerData.total = res.total;
+          this.table.data = res.data.records;
+          this.pagerData.total = res.data.total;
         });
     },
-    event(e) {
+    formEvent(e) {
       if (e.event == "checkbox") {
         console.log(e.value);
       }
@@ -122,17 +144,16 @@ export default {
     },
     alertEvent(e) {
       if (e.event == "confirm") {
-        let url = this.alertFormInfo.data.id ? "update" : "save";
-        /*
-             this.$api.table[url]({ pagerData: this.pagerData },other).then((res) => {
-                this.table.data = res.data;
-                this.pagerData.total = res.total;
-            });
-            */
+        let url = this.formAlert.data.id ? "update" : "save";
 
-        this.alertData.field = false;
+        this.$api.table[url](this.formAlert.data).then((res) => {
+          this.$message.success(res.info);
+          this.getData();
+        });
+        this.alertEvent({ event: "cancel" });
       }
       if (e.event == "cancel") {
+        this.formAlert.data = {};
         this.alertData.field = false;
       }
     },

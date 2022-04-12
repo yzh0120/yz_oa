@@ -34,6 +34,7 @@ public class PageResult<T> {
 //        this.records = pageInfo.getList();
 //    }
 
+        // //IService
     public static  <T> PageResult<T> defaultPageList(Page<T> page, Wrapper<T> queryWrapper, BaseMapper baseMapper){
         IPage pageObj = baseMapper.selectPage(page, queryWrapper);
         PageResult pageResult = new PageResult(pageObj.getRecords(), pageObj.getTotal());

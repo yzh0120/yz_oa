@@ -92,8 +92,8 @@ export default {
           other
         )
         .then((res) => {
-          this.table.data = res.data;
-          this.pagerData.total = res.total;
+          this.table.data = res.data.records;
+          this.pagerData.total = res.data.total;
         });
     },
   },

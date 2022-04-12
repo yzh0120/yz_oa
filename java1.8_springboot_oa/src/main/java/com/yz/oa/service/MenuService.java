@@ -32,5 +32,5 @@ public interface MenuService extends IService<Menu> {
 
     MenuDetail getMenuDetailById(String id);
 
-    Object getScopeByRouteName(String routeName);
+//    Object getScopeByRouteName(String routeName);
 }

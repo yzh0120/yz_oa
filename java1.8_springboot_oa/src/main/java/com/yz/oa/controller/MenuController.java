@@ -73,11 +73,11 @@ public class MenuController  {
         return  ApiResult.success(menuService.getMenuDetailById(id));
     }
 
-    @UserLoginToken
-    @GetMapping("getScopeByRouteName")
-    public ApiResult getScopeByRouteName(@RequestParam("routeName") String routeName){
-        return ApiResult.success(menuService.getScopeByRouteName(routeName));
-    }
+//    @UserLoginToken
+//    @GetMapping("getScopeByRouteName")
+//    public ApiResult getScopeByRouteName(@RequestParam("routeName") String routeName){
+//        return ApiResult.success(menuService.getScopeByRouteName(routeName));
+//    }
 }
 //    @UserLoginToken
 //    @PostMapping("/pageListByParentId")

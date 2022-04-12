@@ -21,16 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="843e7cb9-378e-406d-9eb6-f3ba7b3e97bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/CodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/controller/BaseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/mapper/MenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/mapper/MenuMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/service/MenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/service/impl/MenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yz/oa/utils/selfWeb/returnResult/PageResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yz/oa/utils/selfWeb/returnResult/PageResult.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +149,7 @@
       <workItem from="1649577948207" duration="156000" />
       <workItem from="1649659452049" duration="3473000" />
       <workItem from="1649681997098" duration="4383000" />
-      <workItem from="1649717759641" duration="15580000" />
+      <workItem from="1649717759641" duration="21359000" />
     </task>
     <servers />
   </component>
@@ -196,38 +189,38 @@
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="634" y="215" key="FileChooserDialogImpl/0.0.1707.920@0.0.1707.920" timestamp="1649483642437" />
-    <state width="1663" height="279" key="GridCell.Tab.0.bottom" timestamp="1649742112344">
+    <state width="1663" height="279" key="GridCell.Tab.0.bottom" timestamp="1649769871001">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1663" height="279" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1649742112344" />
-    <state width="1663" height="279" key="GridCell.Tab.0.center" timestamp="1649742112344">
+    <state width="1663" height="279" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1649769871001" />
+    <state width="1663" height="279" key="GridCell.Tab.0.center" timestamp="1649769871001">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1663" height="279" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1649742112344" />
-    <state width="1663" height="279" key="GridCell.Tab.0.left" timestamp="1649742112344">
+    <state width="1663" height="279" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1649769871001" />
+    <state width="1663" height="279" key="GridCell.Tab.0.left" timestamp="1649769871001">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1663" height="279" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1649742112344" />
-    <state width="1663" height="279" key="GridCell.Tab.0.right" timestamp="1649742112344">
+    <state width="1663" height="279" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1649769871001" />
+    <state width="1663" height="279" key="GridCell.Tab.0.right" timestamp="1649769871001">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1663" height="279" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1649742112344" />
-    <state width="1663" height="279" key="GridCell.Tab.1.bottom" timestamp="1649742112344">
+    <state width="1663" height="279" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1649769871001" />
+    <state width="1663" height="279" key="GridCell.Tab.1.bottom" timestamp="1649769871002">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1663" height="279" key="GridCell.Tab.1.bottom/0.0.1707.920@0.0.1707.920" timestamp="1649742112344" />
-    <state width="1663" height="279" key="GridCell.Tab.1.center" timestamp="1649742112344">
+    <state width="1663" height="279" key="GridCell.Tab.1.bottom/0.0.1707.920@0.0.1707.920" timestamp="1649769871002" />
+    <state width="1663" height="279" key="GridCell.Tab.1.center" timestamp="1649769871001">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1663" height="279" key="GridCell.Tab.1.center/0.0.1707.920@0.0.1707.920" timestamp="1649742112344" />
-    <state width="1663" height="279" key="GridCell.Tab.1.left" timestamp="1649742112344">
+    <state width="1663" height="279" key="GridCell.Tab.1.center/0.0.1707.920@0.0.1707.920" timestamp="1649769871001" />
+    <state width="1663" height="279" key="GridCell.Tab.1.left" timestamp="1649769871001">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1663" height="279" key="GridCell.Tab.1.left/0.0.1707.920@0.0.1707.920" timestamp="1649742112344" />
-    <state width="1663" height="279" key="GridCell.Tab.1.right" timestamp="1649742112344">
+    <state width="1663" height="279" key="GridCell.Tab.1.left/0.0.1707.920@0.0.1707.920" timestamp="1649769871001" />
+    <state width="1663" height="279" key="GridCell.Tab.1.right" timestamp="1649769871002">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1663" height="279" key="GridCell.Tab.1.right/0.0.1707.920@0.0.1707.920" timestamp="1649742112344" />
+    <state width="1663" height="279" key="GridCell.Tab.1.right/0.0.1707.920@0.0.1707.920" timestamp="1649769871002" />
     <state width="1663" height="378" key="GridCell.Tab.2.bottom" timestamp="1649577186005">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
@@ -276,5 +269,21 @@
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="510" y="114" width="670" height="676" key="search.everywhere.popup/0.0.1707.920@0.0.1707.920" timestamp="1649726757150" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/yz/oa/service/impl/MenuServiceImpl.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/yz/oa/mapper/RoleMapper.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
