@@ -73,7 +73,7 @@ export function zh(rule, value, callback) {
 /**
  * 只允许中文、括号、正整数
  */
-export function zhOrZhengNum(rule, value, callback) {
+export function zhOrZheng(rule, value, callback) {
   if (value) {
     var reg = /^[\u4e00-\u9fa5\（\）\(\)\d]+$/;
     if (reg.test(value) == false) {
@@ -90,7 +90,7 @@ export function zhOrZhengNum(rule, value, callback) {
 /**
  * 正整数、负整数和小数
  */
-export function zhengNumOrFuNumOrFloat(rule, value, callback) {
+export function zhengOrFuOrFloat(rule, value, callback) {
   if (value) {
     var reg = /^(\-|\+)?\d+(\.\d+)?$/;
     if (reg.test(value) == false) {
@@ -106,7 +106,7 @@ export function zhengNumOrFuNumOrFloat(rule, value, callback) {
 /**
  * 正整数和小数
  */
-export function zhengNumOrFloat(rule, value, callback) {
+export function zhengOrFloat(rule, value, callback) {
   if (value) {
     var reg = /^\d+(\.\d+)?$/;
     if (reg.test(value) == false) {
@@ -122,7 +122,7 @@ export function zhengNumOrFloat(rule, value, callback) {
 /**
  * 负整数和小数
  */
-export function fuNumOrFloat(rule, value, callback) {
+export function fuOrFloat(rule, value, callback) {
   if (value) {
     var reg = /^(\-)\d+(\.\d+)?$/;
     if (reg.test(value) == false) {
@@ -138,7 +138,7 @@ export function fuNumOrFloat(rule, value, callback) {
 /**
  * 正整数
  */
-export function zhengNum(rule, value, callback) {
+export function zheng(rule, value, callback) {
   if (value) {
     var reg = /^\d+$/;
     if (reg.test(value) == false) {
