@@ -282,16 +282,6 @@ export default {
     };
   },
   watch: {
-    //!!!!!这个 只是为了 增加了 list成员,动态给data加个字段(不监听的话 在给新增加的成员赋值之前 此字段不会出现在fomInfo.data上)
-    //!!!!!如果新成员是 check  会报错(check内部做了处理就不会) (check要求默认值是[],所以对于字段有要求的  需像check组件在内部做处理),
-    // "data.list": {
-    // 	handler: function(newVal) {
-    // 		this._updatedata(this.data);
-    // 		   // console.log("1111111")
-    // 	},
-    // 	// immediate: true,
-    // 	deep: true, // 深度监听
-    // },
     "data.list.length": {
       //data.list.splice(index,1,{})  也能触发此watch
       handler: function (newVal) {
